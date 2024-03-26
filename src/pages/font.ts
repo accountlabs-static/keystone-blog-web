@@ -1,13 +1,13 @@
 import { Open_Sans, Montserrat } from 'next/font/google'
 
-export const inter = Open_Sans({
+export const open_sans = Open_Sans({
   subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '600'],
   variable: '--font-open-sans'
 })
  
-export const roboto_mono = Montserrat({
+export const mont_serrat = Montserrat({
   subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '600'],
   variable: '--font-montserrat'
 })
