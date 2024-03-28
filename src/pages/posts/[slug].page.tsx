@@ -8,7 +8,7 @@ import Image from 'next/image';
 import {marked} from 'marked';
 import MainSiteModule from '../../components/MainSiteModule';
 import markedAlert from 'marked-alert';
-import { Post, getPublishTime, postConverter } from './utils';
+import { Post, postConverter } from './utils';
 
 interface PostProps {
   post: Post
@@ -18,7 +18,6 @@ const PostDetail: FC<PostProps> = ({ post }) => {
 
   const postModel = postConverter(post);
   const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes);
-  const publishTime = getPublishTime(postModel.publishedAt);
 
   return <PostContainer>
     <TopBanner>
@@ -31,7 +30,7 @@ const PostDetail: FC<PostProps> = ({ post }) => {
         </Title>
         <PublishTimeAndReadingTime>
           <PublishTime>
-            {publishTime}
+            {postModel.publishTime}
           </PublishTime>
           <Image src={vector} alt='divider' />
           <ReadingTime>

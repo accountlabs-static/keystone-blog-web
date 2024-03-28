@@ -2,7 +2,7 @@ export interface PostModel {
   bodyText: string;
   title: string;
   category: string;
-  publishedAt: string;
+  publishTime: string;
   locale: string;
   slug: string;
   heroImage: {
@@ -38,7 +38,7 @@ export const postConverter = (post: Post): PostModel => {
     bodyText: post.body_text,
     title: post.title,
     category: post.category,
-    publishedAt: post.publishedAt,
+    publishTime: getPublishTime(post.publishedAt),
     locale: post.locale,
     slug: post.slug,
     heroImage: {
