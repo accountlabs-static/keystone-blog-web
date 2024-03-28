@@ -15,13 +15,12 @@ interface HomeProps {
 
 const Home: FC<HomeProps> = ({homepage}) => {
   const homepageModel = homepageConverter(homepage);
-  const title = 'Keystone\'s Blog';
   const description = 'Discover the latest news, development and security tips to safeguard your assets with Keystone.';
   return <HomeWrapper>
     <TopBanner>
       <TitleAndDescription>
         <Title>
-          Keystone's <em>Blog</em>
+          Keystone&apos;s <em>Blog</em>
         </Title>
         <Description>
           {description}

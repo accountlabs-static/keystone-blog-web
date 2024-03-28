@@ -9,7 +9,7 @@ interface CategoryCardProps {
 const CategoryCard: FC<CategoryCardProps> = ({ post }) => {
   return <CategoryCardWrapper href={`/posts/${post.slug}`}>
     {/* <Image src={post.heroImage.url} alt={post.heroImage.name} width={400} height={220} /> */}
-    <Image src={'/keystone3.png'} alt={post.heroImage.name} width={400} height={220} />
+    <Image src={'/111.png'} alt={post.heroImage.name} width={400} height={220} />
     <PostInfo>
       <Title>
         {post.title}

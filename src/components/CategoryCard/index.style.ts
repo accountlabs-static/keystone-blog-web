@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
 
 export const Title = styled.h3`
   font-family: "Mont";
@@ -6,6 +7,12 @@ export const Title = styled.h3`
   font-weight: 600;
   line-height: 36px;
   color: var(--banner-bg-color);
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
 `;
 
 export const CategoryCardWrapper = styled.a`
@@ -20,9 +27,21 @@ export const CategoryCardWrapper = styled.a`
       color: var(--link-color-);
     }
   }
+  @media ${DEVICE_QUERY_MOBILE} {
+    gap: 24px;
+    width: 100%;
+    img {
+      width: 342px;
+      height: 190px;
+    }
+  }
 `;
 
-export const PostInfo = styled.div``;
+export const PostInfo = styled.div`
+  @media ${DEVICE_QUERY_MOBILE} {
+    width: 342px;
+  }
+`;
 
 export const PublishTime = styled.div`
   font-family: var(--font-open-sans);

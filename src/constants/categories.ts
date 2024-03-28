@@ -1,4 +1,5 @@
 export enum Category {
+  // eslint-disable-next-line no-unused-vars
   Enterprise = 'Enterprise',
   // eslint-disable-next-line no-unused-vars
   Hardware_Wallet = 'Hardware Wallet',
