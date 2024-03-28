@@ -1,6 +1,6 @@
-import { Category, CategoryAndPublishTime, SubHeroCardWrapper, PostInfo, PublishTime, Title } from './index.style';
 import React, { FC }  from 'react';
-import { PostModel } from '../../pages/utils';
+import { Category, CategoryAndPublishTime, SubHeroCardWrapper, PostInfo, PublishTime, Title } from './index.style';
+import { PostModel } from '../../pages/uils';
 import Image from 'next/image';
 import { CATEGORY_COLOR_MAPPER } from '../../constants/categories';
 
@@ -8,9 +8,9 @@ interface SubHeroCardProps {
   post: PostModel
 }
 const SubHeroCard: FC<SubHeroCardProps> = ({post}) => {
+  if(!post) return null;
   return <SubHeroCardWrapper href={`/posts/${post.slug}`}>
-    <Image src={'/keystone3.png'} alt={post.heroImage.name} width={600} height={334}/>
-    {/* <Image src={post.heroImage.url} alt={post.heroImage.name} width={600} height={334}/> */}
+    <Image src={post.heroImage.url} alt={post.heroImage.name} width={600} height={334}/>
     <PostInfo>
       <CategoryAndPublishTime>
         <Category fontColor={CATEGORY_COLOR_MAPPER[post.category].fontColor} bgColor={CATEGORY_COLOR_MAPPER[post.category].bgColor}>

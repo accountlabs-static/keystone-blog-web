@@ -1,26 +1,37 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
 
 interface CategoryProps {
   bgColor: string;
-  fontColor: string; 
+  fontColor: string;
 }
 export const Category = styled.span<CategoryProps>`
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  height: 28px;
   padding: 2px 8px;
-  background-color: ${props => props.bgColor};
-  color: ${props => props.fontColor};
+  background-color: ${(props) => props.bgColor};
+  color: ${(props) => props.fontColor};
   border-radius: 4px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 14px;
+    line-height: 22px;
+  }
 `;
 
 export const Title = styled.h3`
-  font-family: "Mont";
   font-size: 24px;
   font-weight: 600;
   line-height: 36px;
   color: var(--banner-bg-color);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 18px;
+    line-height: 28px;
+  }
 `;
 
 export const HeroCardWrapper = styled.a`
@@ -30,13 +41,25 @@ export const HeroCardWrapper = styled.a`
   gap: 80px;
   &:hover {
     ${Title} {
-      color: var(--link-color-);
+      color: var(--link-color);
     }
+  }
+  @media ${DEVICE_QUERY_MOBILE} {
+    width: 100%;
+    img {
+      width: 342px;
+      height: 190px;
+    }
+    flex-direction: column;
+    gap: 24px
   }
 `;
 
 export const PostInfo = styled.div`
   width: 480px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    width: 342px;
+  }
 `;
 
 export const PublishTime = styled.span`
@@ -44,6 +67,10 @@ export const PublishTime = styled.span`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 12px;
+    line-height: 18px;
+  }
 `;
 export const CategoryAndPublishTime = styled.div`
   font-family: var(--font-open-sans);

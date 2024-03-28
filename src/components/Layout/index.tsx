@@ -8,7 +8,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <header>Header{}</header>
-      <main className='test'>{children}</main>
+      <main>{children}</main>
       <footer>Footer</footer>
     </>
   )

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { BodyText, Category, PostContainer, PostInfo, PublishTime, PublishTimeAndReadingTime, ReadingTime, Title, TopBanner } from './index.style';
+import { BackToHome, BodyText, Category, PostContainer, PostInfo, PublishTime, PublishTimeAndReadingTime, ReadingTime, Title, TopBanner } from './index.style';
 import { fetchAPI } from '../../utils/api';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import readingTime from 'reading-time';
@@ -9,6 +9,7 @@ import {marked} from 'marked';
 import MainSiteModule from '../../components/MainSiteModule';
 import markedAlert from 'marked-alert';
 import { Post, postConverter } from './utils';
+import { CATEGORY_COLOR_MAPPER } from '../../constants/categories';
 
 interface PostProps {
   post: Post
@@ -22,7 +23,7 @@ const PostDetail: FC<PostProps> = ({ post }) => {
   return <PostContainer>
     <TopBanner>
       <PostInfo>
-        <Category>
+        <Category color={CATEGORY_COLOR_MAPPER[post.category].fontColorInDarkBg}>
           {postModel.category}
         </Category>
         <Title>
@@ -42,6 +43,16 @@ const PostDetail: FC<PostProps> = ({ post }) => {
         <img src={postModel.heroImage.url} alt={postModel.heroImage.alt} width='600' height='334' />
       </picture>
     </TopBanner>
+    <BackToHome>
+      <a href='/'>
+        <picture>
+          <img src='/left-arrow.svg' alt='' />
+        </picture>
+        <span>
+        Blog Home
+        </span>
+      </a>
+    </BackToHome>
     <BodyText>
       <div
         dangerouslySetInnerHTML={{__html: marked.use(markedAlert()).parse(postModel.bodyText)}}
@@ -60,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         slug: article.attributes.slug,
       },
     })),
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 

@@ -18,7 +18,7 @@ export const TopBanner = styled.div`
     picture > img {
       width: 342px;
       height: 190px;
-  }
+    }
   }
 `;
 
@@ -34,13 +34,16 @@ export const PostInfo = styled.div`
 
 export const Title = styled.h1`
   color: var(--title-color);
-  font-family: "Mont";
   width: 560px;
   margin-top: 8px;
   margin-bottom: 32px;
   font-size: 32px;
   font-weight: 600;
   line-height: 48px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
   @media ${DEVICE_QUERY_MOBILE} {
     width: auto;
     font-size: 24px;
@@ -49,14 +52,19 @@ export const Title = styled.h1`
   }
 `;
 
-export const Category = styled.div`
-  color: var(--label-color);
+export const Category = styled.span`
+  background: ${(props) => props.color};
+  width: fit-content;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  text-transform: uppercase;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 12px;
-    font-weight: 600;
     line-height: 18px;
-    text-transform: uppercase;
   }
 `;
 
@@ -81,6 +89,38 @@ export const PublishTimeAndReadingTime = styled.div`
 `;
 
 export const ReadingTime = styled.div``;
+
+export const BackToHome = styled.div`
+  padding: 24px 0;
+  width: 1220px;
+  margin: 40px auto;
+  border-bottom: 1px solid var(--category-border-color);
+  font-family: var(--font-montserrat);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  picture {
+    height: 24px;
+    margin-right: 8px;
+  }
+  span {
+    background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+  }
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 14px;
+    line-height: 22px;
+    width: 342px;
+    margin-bottom: 0;
+  }
+`;
 
 export const BodyText = styled.div`
   font-family: var(--font-open-sans);
@@ -165,7 +205,7 @@ export const BodyText = styled.div`
     margin-bottom: 20px;
     font-size: 18px;
     @media ${DEVICE_QUERY_MOBILE} {
-      font-size: 16px 
+      font-size: 16px;
     }
   }
   blockquote {

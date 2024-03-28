@@ -7,6 +7,10 @@ export const HomeWrapper = styled.div`
 export const HomeMain = styled.div`
   width: 1280px;
   margin: 0 auto;
+  @media ${DEVICE_QUERY_MOBILE} {
+   padding: 0 24px ;
+   width: 342px;
+  }
 `;
 
 export const TopBanner = styled.div`
@@ -17,11 +21,12 @@ export const TopBanner = styled.div`
   justify-content: center;
   @media ${DEVICE_QUERY_MOBILE} {
     flex-direction: column;
-    padding: 48px 24px;
+    padding: 48px 0;
     width: auto;
-    picture > img {
-      width: 342px;
-      height: 190px;
+    img {
+      width: 100vw;
+      height: auto;
+
     }
   }
 `;
@@ -33,12 +38,13 @@ export const TitleAndDescription = styled.div`
   justify-content: center;
   margin-right: 60px;
   @media ${DEVICE_QUERY_MOBILE} {
-    margin-right: 0;
-  }
+    width: 342px;
+    align-items: center;
+    margin: 0 auto;
+}
 `;
 
 export const Title = styled.h1`
-  font-family: "Mont";
   width: 560px;
   margin-top: 8px;
   margin-bottom: 32px;
@@ -51,8 +57,8 @@ export const Title = styled.h1`
   }
   @media ${DEVICE_QUERY_MOBILE} {
     width: auto;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 30px;
+    line-height: 44px;
     margin-bottom: 16px;
   }
 `;
@@ -62,4 +68,8 @@ export const Description = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    font-size: 14px;
+    line-height: 22px;
+  }
 `;

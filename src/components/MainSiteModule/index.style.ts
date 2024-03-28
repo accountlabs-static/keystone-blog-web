@@ -51,7 +51,6 @@ export const Links = styled.div`
 `;
 
 export const Title = styled.div`
-  font-family: "Mont";
   font-size: 24px;
   font-weight: 400;
   line-height: 36px;

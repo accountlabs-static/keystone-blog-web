@@ -27,6 +27,7 @@ const mediaLogo = [
   }
 ]
 const MainSiteModule: FC = () => {
+  const IMAGE_CDN_URL = `https://${process.env.NEXT_PUBLIC_CDN_DOMAIN}/images`
   return <MainSiteModuleWrapper>
     <MainSiteInfo>
       <Links>
@@ -43,7 +44,7 @@ const MainSiteModule: FC = () => {
         <ArrowRight height='18' width='18' />
       </Explore>
     </MainSiteInfo>
-    <Image src='/keystone3.png' alt='keystone' width={320} height={320} />
+    <Image src={`${IMAGE_CDN_URL}/k3.png`} alt='keystone' width={320} height={320} unoptimized={true} />
   </MainSiteModuleWrapper>
 }
 
