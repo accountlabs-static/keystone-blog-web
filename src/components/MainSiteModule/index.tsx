@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Description, Explore, Links, MainSiteInfo, MainSiteModuleWrapper, Title } from './index.style';
 import Image from 'next/image';
 import ArrowRight from '../ArrowRight';
-import { DISCORD, MAIN_SITE, REDDIT, TELEGRAM, TWITTER } from '../../constants/links';
+import { DISCORD, IMAGE_CDN, MAIN_SITE, REDDIT, TELEGRAM, TWITTER } from '../../constants/links';
 
 const mediaLogo = [
   {
@@ -27,7 +27,6 @@ const mediaLogo = [
   }
 ]
 const MainSiteModule: FC = () => {
-  const IMAGE_CDN_URL = `https://${process.env.NEXT_PUBLIC_CDN_DOMAIN}/images`
   return <MainSiteModuleWrapper>
     <MainSiteInfo>
       <Links>
@@ -44,7 +43,7 @@ const MainSiteModule: FC = () => {
         <ArrowRight height='18' width='18' />
       </Explore>
     </MainSiteInfo>
-    <Image src={`${IMAGE_CDN_URL}/k3.png`} alt='keystone' width={320} height={320} unoptimized={true} />
+    <Image src={`${IMAGE_CDN}/k3.png`} alt='keystone' width={320} height={320} unoptimized={true} />
   </MainSiteModuleWrapper>
 }
 

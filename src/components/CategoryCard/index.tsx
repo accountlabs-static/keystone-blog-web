@@ -1,6 +1,6 @@
 import { CategoryCardWrapper, PostInfo, PublishTime, Title } from './index.style';
 import React, { FC } from 'react';
-import { PostModel } from '../../pages/uils';
+import { PostModel } from '../../types/homePageType';
 import Image from 'next/image';
 
 interface CategoryCardProps {

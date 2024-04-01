@@ -1,6 +1,6 @@
 import React, { FC }  from 'react';
 import { HeroModuleWrapper } from './index.style';
-import { PostModel } from '../../pages/uils';
+import { PostModel } from '../../types/homePageType';
 import HeroCard from '../HeroCard';
 import SubHeroCard from '../SubHeroCard';
 

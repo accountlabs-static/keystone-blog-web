@@ -1,6 +1,6 @@
 import React, { FC }  from 'react';
 import { Category, CategoryAndPublishTime, SubHeroCardWrapper, PostInfo, PublishTime, Title } from './index.style';
-import { PostModel } from '../../pages/uils';
+import { PostModel } from '../../types/homePageType';
 import Image from 'next/image';
 import { CATEGORY_COLOR_MAPPER } from '../../constants/categories';
 

@@ -1,6 +1,6 @@
 import { CategoryModuleWrapper, CategoryName, Posts } from './index.style';
 import React, { FC }  from 'react';
-import { PostModel } from '../../pages/uils';
+import { PostModel } from '../../types/homePageType';
 import { Category } from '../../constants/categories';
 import CategoryCard from '../CategoryCard';
 

@@ -8,7 +8,8 @@ import Image from 'next/image';
 import {marked} from 'marked';
 import MainSiteModule from '../../components/MainSiteModule';
 import markedAlert from 'marked-alert';
-import { Post, postConverter } from './utils';
+import { postConverter } from './utils';
+import { Post } from '../../types/postDetailPageType';
 import { CATEGORY_COLOR_MAPPER } from '../../constants/categories';
 
 interface PostProps {

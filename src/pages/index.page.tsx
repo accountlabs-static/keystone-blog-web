@@ -3,11 +3,13 @@ import { Description, HomeMain, HomeWrapper, Title, TitleAndDescription, TopBann
 import { GetStaticProps } from 'next';
 import { getHeroPosts, getPostsByCategory } from '../utils/api';
 import { Category } from '../constants/categories';
-import { Homepage, homepageConverter } from './uils';
+import { homepageConverter } from './utils';
+import { Homepage } from '../types/homePageType';
 import HeroModule from '../components/HeroModule';
 import CategoryModule from '../components/CategoryModule';
 import Image from 'next/image';
 import Categories from '../components/Categories';
+import { IMAGE_CDN } from '../constants/links';
 
 interface HomeProps {
   homepage: Homepage;
@@ -15,7 +17,7 @@ interface HomeProps {
 
 const Home: FC<HomeProps> = ({homepage}) => {
   const homepageModel = homepageConverter(homepage);
-  const description = 'Discover the latest news, development and security tips to safeguard your assets with Keystone.';
+  const description = homepageModel.description;
   return <HomeWrapper>
     <TopBanner>
       <TitleAndDescription>
@@ -26,7 +28,7 @@ const Home: FC<HomeProps> = ({homepage}) => {
           {description}
         </Description>
       </TitleAndDescription>
-      <Image src={`https://${process.env.NEXT_PUBLIC_CDN_DOMAIN}/images/homepage.png`} alt='keystone' height={350} width={540} unoptimized={true}/>
+      <Image src={`${IMAGE_CDN}/homepage.png`} alt='keystone' height={350} width={540} unoptimized={true}/>
     </TopBanner>
     <HomeMain>
       <Categories />
@@ -56,7 +58,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     ]);
     return {
       props: { 
-        homepage:{      
+        homepage:{
+          description: heroPosts.description,
           heroPost: heroPosts.hero_post.data,
           subHeroFirst: heroPosts.sub_hero_first.data,
           subHeroSecond: heroPosts.sub_hero_second.data,
