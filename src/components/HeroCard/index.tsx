@@ -14,7 +14,7 @@ const HeroCard: FC<HeroCardProps> = ({post}) => {
     <Image src={post.heroImage.url} alt={post.heroImage.name} width={720} height={400}/>
     <PostInfo>
       <CategoryAndPublishTime>
-        <Category fontColor={CATEGORY_COLOR_MAPPER[post.category].fontColor} bgColor={CATEGORY_COLOR_MAPPER[post.category].bgColor} >
+        <Category $fontColor={CATEGORY_COLOR_MAPPER[post.category].fontColor} $bgColor={CATEGORY_COLOR_MAPPER[post.category].bgColor} >
           {post.category}
         </Category>
         <PublishTime>
