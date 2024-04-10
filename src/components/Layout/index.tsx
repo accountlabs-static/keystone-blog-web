@@ -1,4 +1,6 @@
+'use client'
 import React, { ReactNode } from 'react';
+import { Header, Footer } from '../../../header-footer-components';
 
 interface LayoutProps {
   children: ReactNode
@@ -7,9 +9,9 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <header>Header{}</header>
+      <Header />
       <main>{children}</main>
-      <footer>Footer</footer>
+      <Footer />
     </>
   )
 }
