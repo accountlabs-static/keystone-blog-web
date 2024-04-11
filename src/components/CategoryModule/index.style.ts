@@ -17,13 +17,13 @@ export const CategoryName = styled.div`
   font-size: 32px;
   font-weight: 600;
   line-height: 48px;
-  height: 48px;
+  height: fit-content;
   padding: 8px 0;
   border-bottom: 1px solid var(--category-border-color);
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 20px;
     line-height: 30px;
-    height: 30px;
+    height: fit-content;
     padding: 16px 0;
 }
 `;

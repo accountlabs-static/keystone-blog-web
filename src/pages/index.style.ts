@@ -2,14 +2,19 @@ import styled from 'styled-components';
 import { DEVICE_QUERY_MOBILE } from '../styles/breakpoints';
 
 export const HomeWrapper = styled.div`
+  padding-bottom: 148px;
+  @media ${DEVICE_QUERY_MOBILE} {
+    padding-bottom: 128px;
+  }
 `;
 
 export const HomeMain = styled.div`
   width: 1280px;
   margin: 0 auto;
   @media ${DEVICE_QUERY_MOBILE} {
-   padding: 0 24px ;
-   width: calc(100vw - var(--mobile-padding) * 2);
+    margin: 0;
+    padding: 0 24px ;
+    width: calc(100vw - var(--mobile-padding) * 2);
   }
 `;
 
