@@ -7,7 +7,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.CDN_DOMAIN,
+        hostname: process.env.NEXT_PUBLIC_CDN_DOMAIN,
         pathname: '**',
       },
     ],

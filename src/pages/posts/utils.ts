@@ -1,44 +1,12 @@
-export interface PostModel {
-  bodyText: string;
-  title: string;
-  category: string;
-  publishedAt: string;
-  locale: string;
-  slug: string;
-  heroImage: {
-    url: string;
-    alt: string;
-  };
-}
-
-interface HeroImage {
-  data: {
-    id: string;
-    attributes: {
-      name: string;
-      url: string;
-    };
-  };
-}
-
-export interface Post {
-  body_text: string;
-  title: string;
-  category: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  locale: string;
-  slug: string;
-  hero_image: HeroImage;
-}
+import { PostModel } from '../../types/postDetailPageType';
+import { Post } from '../../types/postDetailPageType';
 
 export const postConverter = (post: Post): PostModel => {
   return {
     bodyText: post.body_text,
     title: post.title,
     category: post.category,
-    publishedAt: post.publishedAt,
+    publishTime: getPublishTime(post.publishedAt),
     locale: post.locale,
     slug: post.slug,
     heroImage: {
