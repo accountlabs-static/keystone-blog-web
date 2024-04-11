@@ -63,17 +63,34 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
           heroPost: heroPosts.hero_post.data,
           subHeroFirst: heroPosts.sub_hero_first.data,
           subHeroSecond: heroPosts.sub_hero_second.data,
-          [Category.Hardware_Wallet]: categoryPosts[1],
-          [Category.Crypto_Security]: categoryPosts[2],
-          [Category.Bitcoin]: categoryPosts[4],
+          [Category.Hardware_Wallet]: categoryPosts[0],
+          [Category.Crypto_Security]: categoryPosts[1],
+          [Category.Bitcoin]: categoryPosts[2],
           [Category.Partnerships]: categoryPosts[3],
-          [Category.Enterprise]: categoryPosts[0],
+          [Category.Enterprise]: categoryPosts[4],
           [Category.Other]: categoryPosts[5],}
       },
       revalidate: 1,
     };
   } catch (error) {
     console.error('An error occurred:', error);
+    return {
+      props: { 
+        homepage:{
+          description: '',
+          heroPost: null,
+          subHeroFirst: null,
+          subHeroSecond: null,
+          [Category.Hardware_Wallet]: [],
+          [Category.Crypto_Security]: [],
+          [Category.Bitcoin]: [],
+          [Category.Partnerships]: [],
+          [Category.Enterprise]: [],
+          [Category.Other]: [],
+        }
+      },
+      revalidate: 1,
+    };
   }
 };
 

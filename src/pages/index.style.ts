@@ -9,7 +9,7 @@ export const HomeMain = styled.div`
   margin: 0 auto;
   @media ${DEVICE_QUERY_MOBILE} {
    padding: 0 24px ;
-   width: 342px;
+   width: calc(100vw - var(--mobile-padding) * 2);
   }
 `;
 

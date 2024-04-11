@@ -47,8 +47,8 @@ export const HeroCardWrapper = styled.a`
   @media ${DEVICE_QUERY_MOBILE} {
     width: 100%;
     img {
-      width: 342px;
-      height: 190px;
+      width: 100%;
+      height: auto;
     }
     flex-direction: column;
     gap: 24px
@@ -58,7 +58,7 @@ export const HeroCardWrapper = styled.a`
 export const PostInfo = styled.div`
   width: 480px;
   @media ${DEVICE_QUERY_MOBILE} {
-    width: 342px;
+    width: 100%;
   }
 `;
 

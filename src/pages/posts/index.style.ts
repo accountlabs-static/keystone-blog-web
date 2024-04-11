@@ -16,8 +16,8 @@ export const TopBanner = styled.div`
     padding: 48px 24px;
     width: auto;
     picture > img {
-      width: 342px;
-      height: 190px;
+      width: 100%;
+      height: auto;
     }
   }
 `;
@@ -117,7 +117,7 @@ export const BackToHome = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
-    width: 342px;
+    width: calc(100vw - var(--mobile-padding) * 2);
     margin-bottom: 0;
   }
 `;

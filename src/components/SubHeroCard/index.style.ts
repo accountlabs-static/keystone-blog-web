@@ -50,15 +50,15 @@ export const SubHeroCardWrapper = styled.a`
   @media ${DEVICE_QUERY_MOBILE} {
     width: 100%;
     img {
-      width: 342px;
-      height: 190px;
+      width: 100%;
+      height: auto;
     }
   }
 `;
 
 export const PostInfo = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
-    width: 342px;
+    width: 100%;
   }
 `;
 

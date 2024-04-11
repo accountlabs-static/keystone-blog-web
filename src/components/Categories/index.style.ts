@@ -26,7 +26,12 @@ export const CategoryLable = styled.span`
   color: var(--publish-time-color);
   padding: 8px 16px;
   border-radius: 32px;
-  border: 1px solid var(--category-border-color) ;
+  border: 1px solid var(--category-border-color);
+  &:first-child {
+    color: var(--hover-text-color);
+    background-color: var(--quote-border-color);
+    border-color: var(--quote-border-color);
+  }
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 12px;
     line-height: 18px;
