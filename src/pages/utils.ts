@@ -3,7 +3,7 @@ import { HomepageModule } from '../types/homePageType';
 import { Post } from '../types/homePageType';
 import { Homepage } from '../types/homePageType';
 import { PostModel } from '../types/homePageType';
-import { getPublishTime } from './posts/utils';
+import { getPublishTime } from './[slug]/utils';
 
 const convertPostToPostModel = (post: Post): PostModel => {
   if(!post?.attributes) return null;
