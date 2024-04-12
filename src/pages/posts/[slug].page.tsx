@@ -34,7 +34,7 @@ const PostDetail: FC<PostProps> = ({ post }) => {
           <PublishTime>
             {postModel.publishTime}
           </PublishTime>
-          <Image src={vector} alt='divider' />
+          <Image src={vector} alt='divider' width={2} height={18}/>
           <ReadingTime>
             {minutesToRead} mins read
           </ReadingTime>

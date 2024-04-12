@@ -11,6 +11,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "header-footer": "git+ssh://git@github.com/KeystoneHQ/header-footer-components.git",
     "marked": "^12.0.1",
     "marked-alert": "^2.0.1",
     "next": "^14.1.3",
@@ -18,8 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reading-time": "^1.5.0",
-    "styled-components": "^6.1.8",
-    "header-footer": "git+ssh://git@github.com/KeystoneHQ/header-footer-components.git"
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.2.0",

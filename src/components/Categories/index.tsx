@@ -1,9 +1,9 @@
 import { CategoriesWrapper, CategoryLable } from './index.style';
-import React, { FC } from 'react';
+import React from 'react';
 import { Category } from '../../constants/categories';
 
 
-const Categories: FC = () => {
+const Categories: React.FC = () => {
 
   const renderCategoryLable = () => {
     const labels = [<CategoryLable key='home'>Home</CategoryLable>];
