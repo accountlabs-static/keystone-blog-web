@@ -2,7 +2,6 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "node update-package.js && echo Preinstall script ran successfully",
-    "install": "yarn install --network-concurrency 1",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -13,6 +12,7 @@
     "node": "^18.19.0"
   },
   "dependencies": {
+    "@next/third-parties": "^14.2.1",
     "header-footer": "git+https://keystonehq:${GITHUB_TOKEN}@github.com/KeystoneHQ/header-footer-components.git",
     "marked": "^12.0.1",
     "marked-alert": "^2.0.1",
