@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "scripts": {
-    "preinstall": "yarn cache clean && node update-package.js && echo Preinstall script ran successfully",
+    "preinstall": "node update-package.js && echo Preinstall script ran successfully",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
