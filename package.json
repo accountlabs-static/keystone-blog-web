@@ -2,6 +2,7 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "node update-package.js && echo Preinstall script ran successfully",
+    "install": "yarn install --network-concurrency 1",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
