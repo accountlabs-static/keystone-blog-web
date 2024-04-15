@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "engines": {
-    "node": ">=18"
+    "node": "^18.19.0"
   },
   "dependencies": {
     "header-footer": "git+https://keystonehq:${GITHUB_TOKEN}@github.com/KeystoneHQ/header-footer-components.git",
