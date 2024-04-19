@@ -9,11 +9,11 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang='en'>
-      <GoogleTagManager gtmId="G-WCBLWW84S2" />
+    <>
       <Header />
       <main>{children}</main>
       <Footer />
-    </html>
+      <GoogleTagManager gtmId="G-WCBLWW84S2" />
+    </>
   )
 }
