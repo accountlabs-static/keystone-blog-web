@@ -8,6 +8,7 @@ export interface Post {
   locale: string;
   slug: string;
   hero_image: HeroImage;
+  published_time: string
 }
 
 export interface HeroImage {

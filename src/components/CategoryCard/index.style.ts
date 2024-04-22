@@ -10,7 +10,9 @@ export const Title = styled.h3`
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 3;
+  min-height: 108px;
   @media ${DEVICE_QUERY_MOBILE} {
+    min-height: auto;
     font-size: 18px;
     line-height: 28px;
     margin-top: 0;

@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
 
 interface CategoryProps {
-  bgColor: string;
-  fontColor: string;
+  $bgColor: string;
+  $fontColor: string;
 }
 export const Category = styled.span<CategoryProps>`
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   padding: 2px 8px;
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => props.fontColor};
+  background-color: ${(props) => props.$bgColor};
+  color: ${(props) => props.$fontColor};
   border-radius: 4px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;

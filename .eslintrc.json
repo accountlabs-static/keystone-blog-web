@@ -3,8 +3,7 @@
     "next/core-web-vitals",
     "prettier",
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react/recommended"
   ],
   "rules": {
     "indent": ["error", 2],

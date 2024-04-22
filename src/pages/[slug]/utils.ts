@@ -6,7 +6,7 @@ export const postConverter = (post: Post): PostModel => {
     bodyText: post.body_text,
     title: post.title,
     category: post.category,
-    publishTime: getPublishTime(post.publishedAt),
+    publishTime: getPublishTime( post.published_time ?? post.publishedAt),
     locale: post.locale,
     slug: post.slug,
     heroImage: {

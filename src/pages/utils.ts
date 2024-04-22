@@ -3,7 +3,7 @@ import { HomepageModule } from '../types/homePageType';
 import { Post } from '../types/homePageType';
 import { Homepage } from '../types/homePageType';
 import { PostModel } from '../types/homePageType';
-import { getPublishTime } from './posts/utils';
+import { getPublishTime } from './[slug]/utils';
 
 const convertPostToPostModel = (post: Post): PostModel => {
   if(!post?.attributes) return null;
@@ -11,7 +11,7 @@ const convertPostToPostModel = (post: Post): PostModel => {
     slug: post.attributes.slug,
     title: post.attributes.title,
     category: post.attributes.category,
-    publishTime: getPublishTime(post.attributes.publishedAt),
+    publishTime: getPublishTime(post.attributes.published_time ?? post.attributes.publishedAt),
     heroImage: {
       name: post.attributes.hero_image.data.attributes.name,
       url: post.attributes.hero_image.data.attributes.url,

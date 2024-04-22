@@ -9,11 +9,11 @@ interface SubHeroCardProps {
 }
 const SubHeroCard: FC<SubHeroCardProps> = ({post}) => {
   if(!post) return null;
-  return <SubHeroCardWrapper href={`/posts/${post.slug}`}>
+  return <SubHeroCardWrapper href={post.slug}>
     <Image src={post.heroImage.url} alt={post.heroImage.name} width={600} height={334}/>
     <PostInfo>
       <CategoryAndPublishTime>
-        <Category fontColor={CATEGORY_COLOR_MAPPER[post.category].fontColor} bgColor={CATEGORY_COLOR_MAPPER[post.category].bgColor}>
+        <Category $fontColor={CATEGORY_COLOR_MAPPER[post.category].fontColor} $bgColor={CATEGORY_COLOR_MAPPER[post.category].bgColor}>
           {post.category}
         </Category>
         <PublishTime>

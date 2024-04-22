@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import PostDetail from './[slug].page';
+import PostDetail from './index.page';
 import '@testing-library/jest-dom'
 import { getPublishTime } from './utils';
 
@@ -9,7 +9,7 @@ describe('<PostDetail />', () => {
     const mockPost = {
       body_text: 'This is a post',
       title: 'title',
-      category: 'category',
+      category: 'Bitcoin',
       createdAt: '2024-03-20T05:30:57.799Z',
       updatedAt: '2024-03-20T05:30:57.799Z',
       publishedAt: '2024-03-20T05:30:57.799Z',
@@ -23,7 +23,8 @@ describe('<PostDetail />', () => {
             url: 'keyst.one'
           }
         }
-      }
+      },
+      published_time:'2024-03-20' 
 
     }
     render(<PostDetail post={mockPost} />);

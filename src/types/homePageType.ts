@@ -66,5 +66,6 @@ export interface Post {
         };
       };
     };
+    published_time: string
   };
 }
