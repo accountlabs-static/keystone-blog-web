@@ -57,9 +57,7 @@ export const SubHeroCardWrapper = styled.a`
 `;
 
 export const PostInfo = styled.div`
-  @media ${DEVICE_QUERY_MOBILE} {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 export const PublishTime = styled.span`
