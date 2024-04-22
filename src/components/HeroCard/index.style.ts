@@ -48,7 +48,7 @@ export const HeroCardWrapper = styled.a`
     width: 100%;
     img {
       width: 100%;
-      height: auto;
+      height: 190px;
     }
     flex-direction: column;
     gap: 24px
