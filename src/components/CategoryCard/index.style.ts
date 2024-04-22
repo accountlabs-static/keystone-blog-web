@@ -37,7 +37,7 @@ export const CategoryCardWrapper = styled.a`
     width: 100%;
     img {
       width: 100%;
-      height: auto;
+      height: 190px;
     }
   }
 `;
