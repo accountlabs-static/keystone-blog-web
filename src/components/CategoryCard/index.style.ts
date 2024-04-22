@@ -32,6 +32,9 @@ export const CategoryCardWrapper = styled.a`
       color: var(--link-color);
     }
   }
+  img {
+    object-fit: cover;
+  }
   @media ${DEVICE_QUERY_MOBILE} {
     gap: 24px;
     width: 100%;

@@ -47,6 +47,9 @@ export const SubHeroCardWrapper = styled.a`
       color: var(--link-color);
     }
   }
+  img {
+    object-fit: cover;
+  }
   @media ${DEVICE_QUERY_MOBILE} {
     width: 100%;
     img {
