@@ -11,12 +11,17 @@ import markedAlert from 'marked-alert';
 import { postConverter } from './utils';
 import { Post } from '../../types/postDetailPageType';
 import { CATEGORY_COLOR_MAPPER } from '../../constants/categories';
+import Error from 'next/error';
 
 interface PostProps {
-  post: Post
+  post?: Post;
+  errorCode?: number
 }
 
-const PostDetail: FC<PostProps> = ({ post }) => {
+const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
+  if(errorCode) {
+    return <Error statusCode={errorCode}/>
+  }
 
   const postModel = postConverter(post);
   const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes);
@@ -88,8 +93,14 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
     },
   })
 
+  if(!articlesRes.data[0]) {
+    return {
+      props: { errorCode: 404},
+      revalidate: 1,
+    }
+  }
   return {
-    props: { post: articlesRes.data[0]?.attributes },
+    props: { post: articlesRes.data[0].attributes},
     revalidate: 1,
   }
 }

@@ -11,6 +11,9 @@ export const TopBanner = styled.div`
   justify-content: center;
   padding-top: 80px;
   padding-bottom: 66px;
+  picture > img {
+      object-fit: cover;
+    }
   @media ${DEVICE_QUERY_MOBILE} {
     flex-direction: column;
     padding: 48px 24px;
