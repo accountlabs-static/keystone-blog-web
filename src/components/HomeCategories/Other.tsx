@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Category } from '@/constants/categories'
-import { CateGoryActivedType, PostModel } from '@/types/homePageType'
+import { CategoryActivedType, PostModel } from '@/types/homePageType'
 import { Post } from '@/types/postDetailPageType'
 import { CategoryName, PostItem, Posts } from './Other.style'
 import Button from '@/components/Button'
@@ -8,7 +8,7 @@ import { getPostsByCategory } from '@/utils/api'
 import { postConverter } from '@/pages/[post]/utils'
 
 interface Props {
-  category: CateGoryActivedType
+  category: CategoryActivedType
   posts: Post[]
 }
 

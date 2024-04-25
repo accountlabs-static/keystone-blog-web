@@ -2,16 +2,16 @@ import { CategoriesWrapper, CategoryLable } from './index.style'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Category } from '@/constants/categories'
 import { useRouter } from 'next/router'
-import { CateGoryActivedType } from '@/types/homePageType'
+import { CategoryActivedType } from '@/types/homePageType'
 import { slugify } from '@/utils/helpers'
 import Link from 'next/link'
 
 const Categories: React.FC = () => {
   const router = useRouter()
-  const [actived, setActived] = useState<CateGoryActivedType>()
-  const category = router.query?.category as CateGoryActivedType
+  const [actived, setActived] = useState<CategoryActivedType>()
+  const category = router.query?.category as CategoryActivedType
 
-  const changeCategory = useCallback((category: CateGoryActivedType) => {
+  const changeCategory = useCallback((category: CategoryActivedType) => {
     setActived(slugify(category))
   }, [])
 
