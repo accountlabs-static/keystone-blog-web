@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 import {
   BackToHome,
   BodyText,
@@ -10,32 +10,32 @@ import {
   ReadingTime,
   Title,
   TopBanner,
-} from './index.style';
-import { fetchAPI, getHeroPosts } from '@/utils/api';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import readingTime from 'reading-time';
-import vector from '@/../public/vector.svg';
-import Image from 'next/image';
-import { marked } from 'marked';
-import MainSiteModule from '@/components/MainSiteModule';
-import markedAlert from 'marked-alert';
-import { postConverter } from './utils';
-import { Post } from '@/types/postDetailPageType';
-import { CATEGORY_COLOR_MAPPER } from '@/constants/categories';
-import Error from 'next/error';
+} from './index.style'
+import { fetchAPI } from '@/utils/api'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import readingTime from 'reading-time'
+import vector from '@/../public/vector.svg'
+import Image from 'next/image'
+import { marked } from 'marked'
+import MainSiteModule from '@/components/MainSiteModule'
+import markedAlert from 'marked-alert'
+import { postConverter } from './utils'
+import { Post } from '@/types/postDetailPageType'
+import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
+import Error from 'next/error'
 
 interface PostProps {
-  post?: Post;
-  errorCode?: number;
+  post?: Post
+  errorCode?: number
 }
 
 const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
   if (errorCode) {
-    return <Error statusCode={errorCode} />;
+    return <Error statusCode={errorCode} />
   }
 
-  const postModel = postConverter(post);
-  const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes);
+  const postModel = postConverter(post)
+  const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes)
 
   return (
     <PostContainer>
@@ -79,11 +79,11 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
       </BodyText>
       <MainSiteModule />
     </PostContainer>
-  );
-};
+  )
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articlesRes = await fetchAPI('/posts', { fields: ['slug'] });
+  const articlesRes = await fetchAPI('/posts', { fields: ['slug'] })
 
   return {
     paths: articlesRes.data.map((article) => ({
@@ -92,8 +92,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     })),
     fallback: 'blocking',
-  };
-};
+  }
+}
 
 export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
   const articlesRes = await fetchAPI('/posts', {
@@ -105,18 +105,18 @@ export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
         fields: ['name', 'url'],
       },
     },
-  });
+  })
 
   if (!articlesRes.data[0]) {
     return {
       props: { errorCode: 404 },
       revalidate: 1,
-    };
+    }
   }
   return {
     props: { post: articlesRes.data[0].attributes },
     revalidate: 1,
-  };
-};
+  }
+}
 
-export default PostDetail;
+export default PostDetail
