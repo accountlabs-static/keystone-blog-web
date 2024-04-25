@@ -23,6 +23,7 @@ import { postConverter } from './utils'
 import { Post } from '@/types/postDetailPageType'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import Error from 'next/error'
+import Head from "next/head";
 
 interface PostProps {
   post?: Post
@@ -38,47 +39,60 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
   const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes)
 
   return (
-    <PostContainer>
-      <TopBanner>
-        <PostInfo>
-          <Category
-            color={CATEGORY_COLOR_MAPPER[post.category].fontColorInDarkBg}
-          >
-            {postModel.category}
-          </Category>
-          <Title>{postModel.title}</Title>
-          <PublishTimeAndReadingTime>
-            <PublishTime>{postModel.publishTime}</PublishTime>
-            <Image src={vector} alt="divider" width={2} height={18} />
-            <ReadingTime>{minutesToRead} mins read</ReadingTime>
-          </PublishTimeAndReadingTime>
-        </PostInfo>
-        <picture>
-          <img
-            src={postModel.heroImage.url}
-            alt={postModel.heroImage.alt}
-            width="600"
-            height="334"
-          />
-        </picture>
-      </TopBanner>
-      <BackToHome>
-        <a href="/">
+    <>
+      <Head>
+        <title>{postModel.seo.title}</title>
+        <meta name="description" content={postModel.seo.description} />
+        <link rel='canonical' href={postModel.seo.canonicalURL} />
+        <meta property="og:site_name" content='Keystone Blog' />
+        <meta property="og:type" content='article' />
+        <meta property="og:title" content={postModel.seo.title} />
+        <meta property="og:description" content={postModel.seo.description} />
+        <meta property="og:image" content={postModel.heroImage.url}/>
+        <meta property="og:url" content={postModel.seo.canonicalURL}/>
+      </Head>
+      <PostContainer>
+        <TopBanner>
+          <PostInfo>
+            <Category
+              color={CATEGORY_COLOR_MAPPER[post.category].fontColorInDarkBg}
+            >
+              {postModel.category}
+            </Category>
+            <Title>{postModel.title}</Title>
+            <PublishTimeAndReadingTime>
+              <PublishTime>{postModel.publishTime}</PublishTime>
+              <Image src={vector} alt="divider" width={2} height={18} />
+              <ReadingTime>{minutesToRead} mins read</ReadingTime>
+            </PublishTimeAndReadingTime>
+          </PostInfo>
           <picture>
-            <img src="/left-arrow.svg" alt="" />
+            <img
+              src={postModel.heroImage.url}
+              alt={postModel.heroImage.alt}
+              width="600"
+              height="334"
+            />
           </picture>
-          <span>Blog Home</span>
-        </a>
-      </BackToHome>
-      <BodyText>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: marked.use(markedAlert()).parse(postModel.bodyText),
-          }}
-        />
-      </BodyText>
-      <MainSiteModule />
-    </PostContainer>
+        </TopBanner>
+        <BackToHome>
+          <a href="/">
+            <picture>
+              <img src="/left-arrow.svg" alt="" />
+            </picture>
+            <span>Blog Home</span>
+          </a>
+        </BackToHome>
+        <BodyText>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: marked.use(markedAlert()).parse(postModel.bodyText),
+            }}
+          />
+        </BodyText>
+        <MainSiteModule />
+      </PostContainer>
+    </>
   )
 }
 

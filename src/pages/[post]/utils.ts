@@ -1,5 +1,6 @@
 import { PostModel } from '../../types/postDetailPageType';
 import { Post } from '../../types/postDetailPageType';
+import { BLOG_HOME_PAGE } from "../../constants/links";
 
 export const postConverter = (post: Post): PostModel => {
   return {
@@ -16,7 +17,7 @@ export const postConverter = (post: Post): PostModel => {
     seo: {
       title: post.seo?.metaTitle || `${post.title} | Keystone Hardware Wallet`,
       description: post.seo?.metaDescription || post.title,
-      canonicalURL: post.seo?.canonicalURL || `https://blog.keyst.one/${post.slug}`,
+      canonicalURL: post.seo?.canonicalURL || `${BLOG_HOME_PAGE}/${post.slug}`,
     }
   };
 };
