@@ -9,12 +9,15 @@ export const postConverter = (post: Post): PostModel => {
     publishTime: getPublishTime(post.published_time ?? post.publishedAt),
     locale: post.locale,
     slug: post.slug,
-    ...(post.hero_image.data && {
-      heroImage: {
-        url: post.hero_image.data.attributes.url,
-        alt: post.hero_image.data.attributes.name,
-      },
-    }),
+    heroImage: {
+      url: post.hero_image.data.attributes.url,
+      alt: post.hero_image.data.attributes.name,
+    },
+    seo: {
+      title: post.seo?.metaTitle || `${post.title} | Keystone Hardware Wallet`,
+      description: post.seo?.metaDescription || post.title,
+      canonicalURL: post.seo?.canonicalURL || `https://blog.keyst.one/${post.slug}`,
+    }
   };
 };
 
