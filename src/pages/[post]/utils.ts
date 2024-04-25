@@ -1,6 +1,6 @@
 import { PostModel } from '../../types/postDetailPageType';
 import { Post } from '../../types/postDetailPageType';
-import { BLOG_HOME_PAGE } from "../../constants/links";
+import { BLOG_HOME_PAGE } from '../../constants/links';
 
 export const postConverter = (post: Post): PostModel => {
   return {

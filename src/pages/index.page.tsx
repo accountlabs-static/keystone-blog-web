@@ -6,7 +6,7 @@ import { Homepage } from '@/types/homePageType';
 import HomeLayout from '@/components/Layout/home';
 import { AllCategories } from '@/components/HomeCategories/All';
 import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links';
-import Head from "next/head";
+import Head from 'next/head';
 
 interface HomeProps {
   homepage: Homepage;
@@ -17,7 +17,7 @@ const Home: FC<HomeProps> = ({ homepage }) => {
   return (
     <>
       <Head>
-        <title>Keystone's Blog</title>
+        <title>Keystone&apos;s Blog</title>
         <meta name="description" content={homepage.description} />
         <link rel='canonical' href={BLOG_HOME_PAGE} />
         <meta property="og:title" content="Keystone's Blog" />

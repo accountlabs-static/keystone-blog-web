@@ -23,13 +23,13 @@ export interface HeroImage {
 }
 
 export interface SEO {
-  "metaTitle": string,
-  "metaDescription": string,
-  "keywords"?: string,
-  "metaRobots"?: string,
-  "structuredData"?: string,
-  "metaViewport"?: string,
-  "canonicalURL"?: string,
+  metaTitle: string,
+  metaDescription: string,
+  keywords?: string,
+  metaRobots?: string,
+  structuredData?: string,
+  metaViewport?: string,
+  canonicalURL?: string,
 }
 
 export interface PostModel {
