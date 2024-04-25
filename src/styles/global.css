@@ -6,7 +6,7 @@
   --quote-bg-color: #f7f9fc;
   --quote-border-color: #3d71ff;
   --button-border-color: #1d56f5;
-  --color-gd-primary: linear-gradient(90deg, #1d56f5 50%, #00b3f5 100%);
+  --gd-primary-color: linear-gradient(90deg, #1d56f5 50%, #00b3f5 100%);
   --hover-text-color: #ffffff;
   --note-bg-color: rgba(31, 90, 255, 0.1);
   --warning-bg-color: rgba(224, 81, 110, 0.12);

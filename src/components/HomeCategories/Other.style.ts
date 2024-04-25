@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
-import CategoryCard from '../CategoryCard';
-import { PublishTime, Title } from '../CategoryCard/index.style';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
+import CategoryCard from '@/components/CategoryCard'
+import { PublishTime, Title } from '@/components/CategoryCard/index.style'
+import { ButtonStyled } from '../Button/style'
 
 export const OtherCategoryWrapper = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const OtherCategoryWrapper = styled.div`
     width: 100%;
     gap: 48px;
   }
-`;
+`
 
 export const CategoryName = styled.div`
   font-size: 32px;
@@ -29,14 +30,18 @@ export const CategoryName = styled.div`
     height: fit-content;
     padding: 16px 0;
   }
-`;
+`
 
 export const Posts = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 48px;
   gap: 48px;
-`;
+  ${ButtonStyled} {
+    width: fit-content;
+  }
+`
 
 export const PostItem = styled(CategoryCard)`
   flex-direction: row-reverse;
@@ -54,4 +59,4 @@ export const PostItem = styled(CategoryCard)`
       width: 100%;
     }
   }
-`;
+`
