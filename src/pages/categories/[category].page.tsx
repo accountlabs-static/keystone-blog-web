@@ -1,25 +1,31 @@
 import React, { FC } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Error from 'next/error'
 import { getHeroPosts, getPostsByCategory } from '@/utils/api'
 import { Category } from '@/constants/categories'
-import { CategoryActivedType } from '@/types/homePageType'
 import HomeLayout from '@/components/Layout/home'
-import { useRouter } from 'next/router'
 import { OtherCategories } from '@/components/HomeCategories/Other'
 import { slugToUpperCase, slugToUpperCaseRecoverEnum } from '@/utils/helpers'
 import { Post } from '@/types/postDetailPageType'
 import { postConverter } from '../[post]/utils'
 
 interface CategoriesPageProps {
+  errorCode?: number
   homeDescription: string
   posts: Post[]
+  category: Category
 }
 
-const CategoryPage: FC<CategoriesPageProps> = ({ homeDescription, posts }) => {
-  const router = useRouter()
-  const category =
-    router.query?.category &&
-    (slugToUpperCase(router.query.category as string) as CategoryActivedType)
+const CategoryPage: FC<CategoriesPageProps> = ({
+  errorCode,
+  homeDescription,
+  posts,
+  category,
+}) => {
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
+  }
+
   return (
     <HomeLayout description={homeDescription}>
       <OtherCategories category={category} posts={posts} />
@@ -42,11 +48,27 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async ({
   params,
 }) => {
   const POST_COUNT_IN_CATEGORY = 5
-  const category = slugToUpperCaseRecoverEnum(
+  const categoryKey = slugToUpperCase(params.category as string) as Category
+  const categoryValue = slugToUpperCaseRecoverEnum(
     params.category as string
   ) as Category
+
+  if (!(categoryKey in Category)) {
+    return {
+      props: {
+        errorCode: 404,
+        homeDescription: '',
+        posts: [],
+        category: categoryKey,
+      },
+      revalidate: 1,
+    }
+  }
+
   const heroPosts = await getHeroPosts()
-  const posts = (await getPostsByCategory(category, POST_COUNT_IN_CATEGORY))
+  const posts = (
+    await getPostsByCategory(categoryValue, POST_COUNT_IN_CATEGORY)
+  )
     .map((it) => postConverter(it.attributes))
     .map((it) => ({ ...it, slug: `/${it.slug}` }))
   try {
@@ -54,6 +76,7 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async ({
       props: {
         homeDescription: heroPosts.description,
         posts,
+        category: categoryKey,
       },
       revalidate: 1,
     }
@@ -63,6 +86,7 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async ({
       props: {
         homeDescription: '',
         posts: [],
+        category: categoryKey,
       },
       revalidate: 1,
     }

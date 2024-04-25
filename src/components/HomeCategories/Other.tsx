@@ -31,8 +31,6 @@ export function OtherCategories({ category, posts }: Props) {
     setIsHasNew(newList.length >= 5)
   }, [list, category])
 
-  if (!(category in Category)) return <span>not found category</span>
-
   return (
     <>
       <CategoryName>{category}</CategoryName>
