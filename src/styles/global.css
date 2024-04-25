@@ -1,27 +1,43 @@
 :root {
   --banner-bg-color: #111214;
   --label-color: #bcc0cc;
-  --title-color: #F5F8FF;
-  --link-color: #1F5AFF;
-  --quote-bg-color: #F7F9FC;
-  --quote-border-color: #3D71FF;
-  --button-border-color: #1D56F5;
-  --color-gd-primary: linear-gradient(90deg, #1D56F5 50%, #00B3F5 100%);
+  --title-color: #f5f8ff;
+  --link-color: #1f5aff;
+  --quote-bg-color: #f7f9fc;
+  --quote-border-color: #3d71ff;
+  --button-border-color: #1d56f5;
+  --color-gd-primary: linear-gradient(90deg, #1d56f5 50%, #00b3f5 100%);
   --hover-text-color: #ffffff;
-  --note-bg-color: rgba(31, 90, 255, 0.10);
+  --note-bg-color: rgba(31, 90, 255, 0.1);
   --warning-bg-color: rgba(224, 81, 110, 0.12);
-  --warning-font-color: #E03F5F;
-  --publish-time-color: #5D657A;
-  --category-border-color: #E1E5F0;
+  --warning-font-color: #e03f5f;
+  --publish-time-color: #5d657a;
+  --category-border-color: #e1e5f0;
   --mobile-padding: 24px;
-
-
+  --fg-subtle-color: #9397a3;
+  --bd-primary-color: #1f5aff;
 }
 
 body {
-  font-family: 'Mont', -apple-system, 'Microsoft Yahei', '微软雅黑',
-  'MicrosoftJhengHei', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-  Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    'Mont',
+    -apple-system,
+    'Microsoft Yahei',
+    '微软雅黑',
+    'MicrosoftJhengHei',
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
   font-style: normal;
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }

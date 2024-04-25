@@ -34,6 +34,7 @@ export const CategoryCardWrapper = styled.a`
   }
   img {
     object-fit: cover;
+    border-radius: 24px;
   }
   @media ${DEVICE_QUERY_MOBILE} {
     gap: 24px;

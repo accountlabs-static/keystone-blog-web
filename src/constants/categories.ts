@@ -1,8 +1,8 @@
 export enum Category {
   // eslint-disable-next-line no-unused-vars
-  Hardware_Wallet = 'Hardware Wallet',
+  HardwareWallet = 'Hardware Wallet',
   // eslint-disable-next-line no-unused-vars
-  Crypto_Security = 'Crypto Security',
+  CryptoSecurity = 'Crypto Security',
   // eslint-disable-next-line no-unused-vars
   Bitcoin = 'Bitcoin',
   // eslint-disable-next-line no-unused-vars
@@ -13,13 +13,14 @@ export enum Category {
   Other = 'Other',
   // Hardware Wallet 、Crypto Security 、Bitcoin 、Partnerships、 Enterprise 、Other
 }
+
 export const CATEGORY_COLOR_MAPPER = {
-  [Category.Hardware_Wallet]: {
+  [Category.HardwareWallet]: {
     fontColor: '#1F5AFF',
     bgColor: 'rgba(31, 90, 255, 0.12)',
     fontColorInDarkBg: 'linear-gradient(90deg, #3D71FF 0%, #93CEF5 100%)',
   },
-  [Category.Crypto_Security]: {
+  [Category.CryptoSecurity]: {
     fontColor: '#14A37D',
     bgColor: 'rgba(20, 163, 125, 0.12)',
     fontColorInDarkBg: 'linear-gradient(90deg, #1BE0C6 0%, #1DBBF5 100%)',
@@ -44,5 +45,4 @@ export const CATEGORY_COLOR_MAPPER = {
     bgColor: 'rgba(29, 187, 245, 0.12)',
     fontColorInDarkBg: '#09AEEB',
   },
-
-}
+};

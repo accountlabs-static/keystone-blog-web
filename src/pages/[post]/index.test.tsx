@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import PostDetail from './index.page';
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { getPublishTime } from './utils';
 
 describe('<PostDetail />', () => {
@@ -20,13 +20,12 @@ describe('<PostDetail />', () => {
           id: '1',
           attributes: {
             name: 'keystone',
-            url: 'keyst.one'
-          }
-        }
+            url: 'keyst.one',
+          },
+        },
       },
-      published_time:'2024-03-20' 
-
-    }
+      published_time: '2024-03-20',
+    };
     render(<PostDetail post={mockPost} />);
     const postDetail = screen.getByText(mockPost.title);
     expect(postDetail).toBeInTheDocument();
@@ -36,6 +35,5 @@ describe('<PostDetail />', () => {
     const publishedAt = '2024-03-20T05:30:57.799Z';
     const publishTime = 'Mar 20, 2024';
     expect(getPublishTime(publishedAt)).toEqual(publishTime);
-  })
-})
-
+  });
+});

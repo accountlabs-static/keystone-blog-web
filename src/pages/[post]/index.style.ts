@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
+import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints';
 
 export const PostContainer = styled.div``;
 
@@ -12,8 +12,8 @@ export const TopBanner = styled.div`
   padding-top: 80px;
   padding-bottom: 66px;
   picture > img {
-      object-fit: cover;
-    }
+    object-fit: cover;
+  }
   @media ${DEVICE_QUERY_MOBILE} {
     flex-direction: column;
     padding: 48px 24px;
@@ -140,7 +140,7 @@ export const BodyText = styled.div`
     text-decoration: none;
     position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       display: inline-block;
       left: 0;
@@ -233,7 +233,7 @@ export const BodyText = styled.div`
       display: flex;
       align-items: center;
       &::before {
-        content: url("/note.svg");
+        content: url('/note.svg');
         height: 24px;
         margin-right: 12px;
         display: block;
@@ -250,7 +250,7 @@ export const BodyText = styled.div`
       display: flex;
       align-items: center;
       &::before {
-        content: url("/warning.svg");
+        content: url('/warning.svg');
         height: 24px;
         margin-right: 12px;
         display: block;

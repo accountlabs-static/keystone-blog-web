@@ -1,8 +1,8 @@
 import { Category } from '../constants/categories';
 
 const {
-  Hardware_Wallet,
-  Crypto_Security,
+  HardwareWallet,
+  CryptoSecurity,
   Bitcoin,
   Partnerships,
   Enterprise,
@@ -25,8 +25,8 @@ export interface Homepage {
   heroPost: Post;
   subHeroFirst: Post;
   subHeroSecond: Post;
-  [Category.Hardware_Wallet]: Post[];
-  [Category.Crypto_Security]: Post[];
+  [Category.HardwareWallet]: Post[];
+  [Category.CryptoSecurity]: Post[];
   [Category.Bitcoin]: Post[];
   [Category.Partnerships]: Post[];
   [Category.Enterprise]: Post[];
@@ -38,8 +38,8 @@ export interface HomepageModule {
   heroPost: PostModel;
   subHeroFirst: PostModel;
   subHeroSecond: PostModel;
-  [Hardware_Wallet]: PostModel[];
-  [Crypto_Security]: PostModel[];
+  [HardwareWallet]: PostModel[];
+  [CryptoSecurity]: PostModel[];
   [Bitcoin]: PostModel[];
   [Partnerships]: PostModel[];
   [Enterprise]: PostModel[];
@@ -66,6 +66,8 @@ export interface Post {
         };
       };
     };
-    published_time: string
+    published_time: string;
   };
 }
+
+export type CateGoryActivedType = keyof typeof Category | 'All' | (string & {});
