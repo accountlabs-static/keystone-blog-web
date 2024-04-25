@@ -8,7 +8,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   line-height: 24px;
   display: inline-flex;
   align-items: center;
-  padding: 12px 18px 12px 28px;
+  padding: 12px 20px;
   color: white;
   background: var(--gd-primary-color);
   appearance: none;

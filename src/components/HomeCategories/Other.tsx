@@ -18,7 +18,7 @@ export function OtherCategories({ category, posts }: Props) {
 
   useEffect(() => {
     setList(posts)
-    setIsHasNew(true)
+    setIsHasNew(posts.length >= 5)
   }, [posts])
 
   const loadMore = useCallback(async () => {

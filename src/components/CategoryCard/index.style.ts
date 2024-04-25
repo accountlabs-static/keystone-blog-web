@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints'
 
 export const Title = styled.h3`
   font-size: 24px;
@@ -10,7 +10,6 @@ export const Title = styled.h3`
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 3;
-  min-height: 108px;
   @media ${DEVICE_QUERY_MOBILE} {
     min-height: auto;
     font-size: 18px;
@@ -18,7 +17,7 @@ export const Title = styled.h3`
     margin-top: 0;
     margin-bottom: 16px;
   }
-`;
+`
 
 export const CategoryCardWrapper = styled.a`
   text-decoration: none;
@@ -44,13 +43,13 @@ export const CategoryCardWrapper = styled.a`
       height: 190px;
     }
   }
-`;
+`
 
 export const PostInfo = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
     width: 100%;
   }
-`;
+`
 
 export const PublishTime = styled.div`
   font-family: var(--font-open-sans);
@@ -58,4 +57,4 @@ export const PublishTime = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
-`;
+`
