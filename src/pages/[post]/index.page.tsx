@@ -23,7 +23,7 @@ import { postConverter } from './utils'
 import { Post } from '@/types/postDetailPageType'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import Error from 'next/error'
-import Head from "next/head";
+import Head from 'next/head';
 
 interface PostProps {
   post?: Post
@@ -44,7 +44,7 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
         <title>{postModel.seo.title}</title>
         <meta name="description" content={postModel.seo.description} />
         <link rel='canonical' href={postModel.seo.canonicalURL} />
-        <meta property="og:site_name" content='Keystone Blog' />
+        <meta property="og:site_name" content="Keystone's Blog" />
         <meta property="og:type" content='article' />
         <meta property="og:title" content={postModel.seo.title} />
         <meta property="og:description" content={postModel.seo.description} />
