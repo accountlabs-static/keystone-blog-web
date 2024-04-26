@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
+import styled, { css } from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 
 export const CategoriesWrapper = styled.div`
   display: flex;
@@ -16,10 +16,16 @@ export const CategoriesWrapper = styled.div`
       display: none;
     }
   }
-`;
+`
 
-export const CategoryLable = styled.span`
-  font-family: var(--font-montserrat);
+const activedCategoryLabelCss = css`
+  color: var(--hover-text-color);
+  background-color: var(--quote-border-color);
+  border-color: var(--quote-border-color);
+`
+
+export const CategoryLable = styled.span<{ $actived: boolean }>`
+  font-family: var(--font-bebas-neue);
   font-size: 14px;
   font-weight: 600;
   line-height: 22px;
@@ -27,10 +33,10 @@ export const CategoryLable = styled.span`
   padding: 8px 16px;
   border-radius: 32px;
   border: 1px solid var(--category-border-color);
-  &:first-child {
-    color: var(--hover-text-color);
-    background-color: var(--quote-border-color);
-    border-color: var(--quote-border-color);
+  cursor: pointer;
+  ${(props) => props.$actived && activedCategoryLabelCss}
+  &:hover {
+    ${activedCategoryLabelCss}
   }
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 12px;
@@ -38,4 +44,4 @@ export const CategoryLable = styled.span`
     display: inline-block;
     margin-right: 8px;
   }
-`;
+`

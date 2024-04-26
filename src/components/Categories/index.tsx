@@ -1,22 +1,55 @@
-import { CategoriesWrapper, CategoryLable } from './index.style';
-import React from 'react';
-import { Category } from '../../constants/categories';
-
+import { CategoriesWrapper, CategoryLable } from './index.style'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Category } from '@/constants/categories'
+import { useRouter } from 'next/router'
+import { CategoryActivedType } from '@/types/homePageType'
+import { slugify } from '@/utils/helpers'
+import Link from 'next/link'
 
 const Categories: React.FC = () => {
+  const router = useRouter()
+  const [actived, setActived] = useState<CategoryActivedType>()
+  const category = router.query?.category as CategoryActivedType
+
+  const changeCategory = useCallback((category: CategoryActivedType) => {
+    setActived(slugify(category))
+  }, [])
+
+  useEffect(() => {
+    if (category) {
+      setActived(slugify(category))
+    } else {
+      setActived('All')
+    }
+  }, [category])
 
   const renderCategoryLable = () => {
-    const labels = [<CategoryLable key='home'>Home</CategoryLable>];
-    for (const value of Object.values(Category)) {
+    const labels = [
+      <Link href="/" key="home">
+        <CategoryLable
+          $actived={actived === 'All'}
+          onClick={() => changeCategory('All')}
+        >
+          Home
+        </CategoryLable>
+      </Link>,
+    ]
+    for (const [_key, value] of Object.entries(Category)) {
       labels.push(
-        <CategoryLable key={value}>{value}</CategoryLable>
+        <Link href={`/categories/${slugify(value)}`}>
+          <CategoryLable
+            $actived={actived === slugify(value)}
+            key={value}
+            onClick={() => changeCategory(value)}
+          >
+            {value}
+          </CategoryLable>
+        </Link>
       )
     }
-    return labels;
+    return labels
   }
-  return <CategoriesWrapper>
-    {renderCategoryLable()}
-  </CategoriesWrapper>
+  return <CategoriesWrapper>{renderCategoryLable()}</CategoriesWrapper>
 }
 
-export default Categories;
+export default Categories
