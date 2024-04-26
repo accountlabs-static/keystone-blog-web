@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css } from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 
 export const PostContainer = styled.div``
@@ -93,7 +93,68 @@ export const PublishTimeAndReadingTime = styled.div`
 
 export const ReadingTime = styled.div``
 
-export const BackToHome = styled.div`
+const HoverStyle = css`
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  .default {
+    transition: var(--transition);
+  }
+  .active {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: var(--transition);
+  }
+  &:hover {
+    .default {
+      opacity: 0;
+    }
+    .active {
+      opacity: 1;
+    }
+  }
+`
+export const BackToHome = styled.a`
+  ${HoverStyle}
+  .active {
+    left: 0;
+  }
+  span {
+    background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+  }
+  &:hover {
+    span {
+      background: var(--bd-primary-color);
+      background-clip: text;
+    }
+  }
+`
+
+export const Share = styled.div`
+  ${HoverStyle}
+  .active {
+    right: 0;
+  }
+  span {
+    color: var(--fg-subtle-color);
+  }
+  &:hover {
+    span {
+      color: var(--bd-primary-color);
+      transition: var(--transition);
+    }
+  }
+`
+
+export const BackToHomeAndShare = styled.div`
   padding: 24px 0;
   width: 1220px;
   margin: 40px auto;
@@ -102,20 +163,14 @@ export const BackToHome = styled.div`
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 24px;
+    height: 24px;
   }
   picture {
     height: 24px;
-    margin-right: 8px;
-  }
-  span {
-    background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    width: fit-content;
   }
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;

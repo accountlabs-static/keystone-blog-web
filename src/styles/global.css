@@ -19,6 +19,9 @@
   --bd-primary-color: #1f5aff;
 
   --font-neue-kaine: 'Neue Kaine';
+  --transition: all 0.25s ease-in-out;
+
+
 }
 
 body {

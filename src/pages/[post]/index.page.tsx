@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import {
   BackToHome,
+  BackToHomeAndShare,
   BodyText,
   Category,
   PostContainer,
@@ -8,6 +9,7 @@ import {
   PublishTime,
   PublishTimeAndReadingTime,
   ReadingTime,
+  Share,
   Title,
   TopBanner,
 } from './index.style'
@@ -77,19 +79,22 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
             />
           </picture>
         </TopBanner>
-        <BackToHome>
-          <Link href="/">
+        <BackToHomeAndShare>
+          <BackToHome href="/">
             <picture>
-              <img
-                src="/left-arrow.svg"
-                width="24"
-                height="24"
-                alt="blog home"
-              />
+              <img src="/left-arrow.svg" className="default" alt="" loading="lazy" />
+              <img src="/left-arrow-active.svg" className="active" alt="" loading="lazy" />
             </picture>
             <span>Blog Home</span>
-          </Link>
-        </BackToHome>
+          </BackToHome>
+          <Share>
+            <span>Share</span>
+            <picture>
+              <img src="/share.svg" className="default" alt="" loading="lazy" />
+              <img src="/share-active.svg" className="active" alt="" loading="lazy" />
+            </picture>
+          </Share>
+        </BackToHomeAndShare>
         <BodyText>
           <div
             dangerouslySetInnerHTML={{
