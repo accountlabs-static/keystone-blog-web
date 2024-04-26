@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints'
 
 export const MainSiteModuleWrapper = styled.div`
   width: 880px;
@@ -25,7 +25,7 @@ export const MainSiteModuleWrapper = styled.div`
     margin: 0 24px;
     align-items: center;
   }
-`;
+`
 
 export const MainSiteInfo = styled.div`
   padding: 42px 72px;
@@ -36,7 +36,7 @@ export const MainSiteInfo = styled.div`
     padding: 0;
     margin-top: 40px;
   }
-`;
+`
 
 export const Links = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ export const Links = styled.div`
     @media ${DEVICE_QUERY_MOBILE} {
     }
   }
-`;
+`
 
 export const Title = styled.div`
   font-size: 24px;
@@ -59,7 +59,7 @@ export const Title = styled.div`
     font-size: 18px;
     line-height: 28px;
   }
-`;
+`
 
 export const Description = styled.div`
   font-family: var(--font-open-sans);
@@ -71,7 +71,7 @@ export const Description = styled.div`
     font-size: 14px;
     line-height: 22px;
   }
-`;
+`
 
 export const Explore = styled.a`
   font-family: var(--font-montserrat);
@@ -84,7 +84,7 @@ export const Explore = styled.a`
   padding: 12px 18px 12px 28px;
   text-decoration: none;
   color: var(--banner-bg-color);
-  border-image: var(--color-gd-primary) 1;
+  border-image: var(--gd-primary-color) 1;
   &:hover {
     background: linear-gradient(90deg, #1d56f5 0%, #00b3f5 100%);
     color: var(--hover-text-color);
@@ -94,6 +94,6 @@ export const Explore = styled.a`
     line-height: 22px;
     padding: 12px 26px;
   }
-`;
+`
 
-export const Image = styled.img``;
+export const Image = styled.img``
