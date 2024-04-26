@@ -5,10 +5,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import readingTime from 'reading-time';
 import vector from '../../../public/vector.svg';
 import Image from 'next/image';
-import {marked} from 'marked';
 import MainSiteModule from '../../components/MainSiteModule';
-import markedAlert from 'marked-alert';
-import { postConverter } from './utils';
+import { postConverter } from '../[post]/utils';
 import { Post } from '../../types/postDetailPageType';
 import { CATEGORY_COLOR_MAPPER } from '../../constants/categories';
 import Error from 'next/error';
@@ -72,7 +70,7 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
         </BackToHome>
         <BodyText>
           <div
-            dangerouslySetInnerHTML={{__html: marked.use(markedAlert()).parse(postModel.bodyText)}}
+            dangerouslySetInnerHTML={{__html: postModel.bodyText}}
           />
         </BodyText>
         <MainSiteModule />
