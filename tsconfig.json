@@ -44,6 +44,9 @@
             ],
             "@/utils/*": [
                 "src/utils/*"
+            ],            
+            "@/hooks/*": [
+                "src/hooks/*"
             ],
             "@/constants/*": [
                 "src/constants/*"

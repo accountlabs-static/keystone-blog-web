@@ -25,6 +25,8 @@ import { postConverter } from './utils'
 import { Post } from '@/types/postDetailPageType'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import Error from 'next/error'
+import Popover from '@/components/Popover'
+import Media from '@/components/Media'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -87,13 +89,20 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
             </picture>
             <span>Blog Home</span>
           </BackToHome>
-          <Share>
-            <span>Share</span>
-            <picture>
-              <img src="/share.svg" className="default" alt="" loading="lazy" />
-              <img src="/share-active.svg" className="active" alt="" loading="lazy" />
-            </picture>
-          </Share>
+          <Popover
+            placement="top"
+            transition="slide bottom-10"
+            content={<Media url={`https://blog.keyst.one/${post.slug}`} />} 
+          >
+            <Share>
+              <span>Share</span>
+    
+              <picture>
+                <img src="/share.svg" className="default" alt="" loading="lazy" />
+                <img src="/share-active.svg" className="active" alt="" loading="lazy" />
+              </picture>
+            </Share>
+          </Popover>
         </BackToHomeAndShare>
         <BodyText>
           <div
