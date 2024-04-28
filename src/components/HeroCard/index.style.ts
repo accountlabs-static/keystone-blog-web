@@ -8,7 +8,7 @@ interface CategoryProps {
   $bgColor: string
   $fontColor: string
 }
-export const Category = styled(H6)<CategoryProps>`
+export const Category = styled(H6) <CategoryProps>`
   padding: 2px 8px;
   background-color: ${(props) => props.$bgColor};
   color: ${(props) => props.$fontColor};

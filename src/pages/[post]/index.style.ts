@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 
-export const PostContainer = styled.div``;
+export const PostContainer = styled.div``
 
 export const TopBanner = styled.div`
   background-color: var(--banner-bg-color);
@@ -23,7 +23,7 @@ export const TopBanner = styled.div`
       height: auto;
     }
   }
-`;
+`
 
 export const PostInfo = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ export const PostInfo = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
     margin-right: 0;
   }
-`;
+`
 
 export const Title = styled.h1`
   color: var(--title-color);
@@ -53,7 +53,7 @@ export const Title = styled.h1`
     line-height: 32px;
     margin-bottom: 16px;
   }
-`;
+`
 
 export const Category = styled.span`
   background: ${(props) => props.color};
@@ -69,9 +69,9 @@ export const Category = styled.span`
     font-size: 12px;
     line-height: 18px;
   }
-`;
+`
 
-export const PublishTime = styled.div``;
+export const PublishTime = styled.div``
 
 export const PublishTimeAndReadingTime = styled.div`
   align-items: center;
@@ -89,9 +89,9 @@ export const PublishTimeAndReadingTime = styled.div`
     font-weight: 600;
     margin-bottom: 40px;
   }
-`;
+`
 
-export const ReadingTime = styled.div``;
+export const ReadingTime = styled.div``
 
 export const BackToHome = styled.div`
   padding: 24px 0;
@@ -123,7 +123,7 @@ export const BackToHome = styled.div`
     width: calc(100vw - var(--mobile-padding) * 2);
     margin-bottom: 0;
   }
-`;
+`
 
 export const BodyText = styled.div`
   font-family: var(--font-open-sans);
@@ -257,4 +257,4 @@ export const BodyText = styled.div`
       }
     }
   }
-`;
+`

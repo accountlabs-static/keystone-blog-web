@@ -44,6 +44,22 @@ export const Links = styled.div`
   margin-bottom: 16px;
 
   img {
+    display: inline-block;
+  }
+
+  a .hovered {
+    display: none;
+  }
+  a:hover {
+    img {
+      display: none;
+    }
+    img.hovered {
+      display: inline-block;
+    }
+  }
+
+  img {
     position: inherit;
     @media ${DEVICE_QUERY_MOBILE} {
     }

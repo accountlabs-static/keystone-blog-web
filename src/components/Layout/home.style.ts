@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
+import { Body } from '../styles/text'
 
 export const HomeWrapper = styled.div`
   padding-bottom: 148px;
@@ -66,11 +67,8 @@ export const Title = styled.h1`
   }
 `
 
-export const Description = styled.div`
+export const Description = styled(Body)`
   font-family: var(--font-open-sans);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
