@@ -3,3 +3,9 @@
   font-family: 'Mont';
   src: url('https://keyst.one/statics/fonts/mainsite/Mont-Regular.ttf');
 }
+
+@font-face {
+  font-display: swap;
+  font-family: 'Neue Kaine';
+  src: url('/neue-kaine-variable.ttf');
+}

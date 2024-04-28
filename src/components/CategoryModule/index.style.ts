@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints'
+import { H4 } from '../styles/heading'
 
 export const CategoryModuleWrapper = styled.div`
   display: flex;
@@ -11,9 +12,9 @@ export const CategoryModuleWrapper = styled.div`
     width: 100%;
     gap: 48px;
   }
-`;
+`
 
-export const CategoryName = styled.div`
+export const CategoryName = styled(H4)`
   font-size: 32px;
   font-weight: 600;
   line-height: 48px;
@@ -25,11 +26,11 @@ export const CategoryName = styled.div`
     line-height: 30px;
     height: fit-content;
     padding: 16px 0;
-}
-`;
+  }
+`
 
 export const Posts = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-`;
+`

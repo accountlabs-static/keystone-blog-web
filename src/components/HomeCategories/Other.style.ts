@@ -3,6 +3,7 @@ import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 import CategoryCard from '@/components/CategoryCard'
 import { PublishTime, Title } from '@/components/CategoryCard/index.style'
 import { ButtonStyled } from '../Button/style'
+import { Category } from '../SubHeroCard/index.style'
 
 export const OtherCategoryWrapper = styled.div`
   display: flex;
@@ -40,6 +41,9 @@ export const Posts = styled.div`
   gap: 48px;
   ${ButtonStyled} {
     width: fit-content;
+  }
+  ${Category} {
+    display: none;
   }
 `
 

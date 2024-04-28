@@ -9,7 +9,7 @@ import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links';
 import Head from 'next/head';
 
 interface HomeProps {
-  homepage: Homepage;
+  homepage: Homepage
 }
 
 const Home: FC<HomeProps> = ({ homepage }) => {
@@ -34,17 +34,10 @@ const Home: FC<HomeProps> = ({ homepage }) => {
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const POST_COUNT_IN_CATEGORY = 3;
-  const heroPosts = await getHeroPosts();
+  const POST_COUNT = 9
+  const heroPosts = await getHeroPosts()
+  const latests = await getPostsLatests(POST_COUNT)
   try {
-    const categoryPosts = await Promise.all([
-      getPostsByCategory(Category.HardwareWallet, POST_COUNT_IN_CATEGORY),
-      getPostsByCategory(Category.CryptoSecurity, POST_COUNT_IN_CATEGORY),
-      getPostsByCategory(Category.Bitcoin, POST_COUNT_IN_CATEGORY),
-      getPostsByCategory(Category.Partnerships, POST_COUNT_IN_CATEGORY),
-      getPostsByCategory(Category.Enterprise, POST_COUNT_IN_CATEGORY),
-      getPostsByCategory(Category.Other, POST_COUNT_IN_CATEGORY),
-    ]);
     return {
       props: {
         homepage:{
@@ -52,36 +45,26 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
           heroPost: heroPosts.hero_post.data,
           subHeroFirst: heroPosts.sub_hero_first.data,
           subHeroSecond: heroPosts.sub_hero_second.data,
-          [Category.HardwareWallet]: categoryPosts[0],
-          [Category.CryptoSecurity]: categoryPosts[1],
-          [Category.Bitcoin]: categoryPosts[2],
-          [Category.Partnerships]: categoryPosts[3],
-          [Category.Enterprise]: categoryPosts[4],
-          [Category.Other]: categoryPosts[5],
+          latests,
         },
       },
       revalidate: 1,
-    };
+    }
   } catch (error) {
-    console.error('An error occurred:', error);
+    console.error('An error occurred:', error)
     return {
       props: {
-        homepage:{
+        homepage: {
           description: '',
           heroPost: null,
           subHeroFirst: null,
           subHeroSecond: null,
-          [Category.HardwareWallet]: [],
-          [Category.CryptoSecurity]: [],
-          [Category.Bitcoin]: [],
-          [Category.Partnerships]: [],
-          [Category.Enterprise]: [],
-          [Category.Other]: [],
+          latests: [],
         },
       },
       revalidate: 1,
-    };
+    }
   }
-};
+}
 
-export default Home;
+export default Home

@@ -1,10 +1,13 @@
 import styled from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '../../styles/breakpoints'
+import { H5 } from '../styles/heading'
+import Link from 'next/link'
+import { Body } from '../styles/text'
 
-export const Title = styled.h3`
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 36px;
+export const Title = styled(H5).attrs({
+  as: 'h3',
+})`
+  margin-top: 16px;
   color: var(--banner-bg-color);
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -14,12 +17,11 @@ export const Title = styled.h3`
     min-height: auto;
     font-size: 18px;
     line-height: 28px;
-    margin-top: 0;
     margin-bottom: 16px;
   }
 `
 
-export const CategoryCardWrapper = styled.a`
+export const CategoryCardWrapper = styled(Link)`
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -41,6 +43,7 @@ export const CategoryCardWrapper = styled.a`
     img {
       width: 100%;
       height: 190px;
+      border-radius: 16px;
     }
   }
 `
@@ -51,10 +54,9 @@ export const PostInfo = styled.div`
   }
 `
 
-export const PublishTime = styled.div`
+export const PublishTime = styled(Body)`
+  display: inline-block;
+  margin-top: 16px;
   font-family: var(--font-open-sans);
   color: var(--publish-time-color);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
 `
