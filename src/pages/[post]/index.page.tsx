@@ -78,17 +78,17 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
           </picture>
         </TopBanner>
         <BackToHome>
-          <a href="/">
+          <Link href="/">
             <picture>
               <img
-                src={postModel.heroImage.url}
-                alt={postModel.heroImage.alt}
-                width="600"
-                height="334"
+                src="/left-arrow.svg"
+                width="24"
+                height="24"
+                alt="blog home"
               />
             </picture>
             <span>Blog Home</span>
-          </a>
+          </Link>
         </BackToHome>
         <BodyText>
           <div

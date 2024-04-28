@@ -8,7 +8,8 @@ interface CategoryProps {
   $bgColor: string
   $fontColor: string
 }
-export const Category = styled(H6) <CategoryProps>`
+export const Category = styled(H6)<CategoryProps>`
+  font-family: var(--font-neue-kaine);
   display: inline-block;
   padding: 2px 12px;
   background-color: ${(props) => props.$bgColor};
@@ -67,6 +68,7 @@ export const PostInfo = styled.div`
 `
 
 export const PublishTime = styled(Body)`
+  font-family: var(--font-neue-kaine);
   color: var(--publish-time-color);
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 12px;
@@ -75,7 +77,6 @@ export const PublishTime = styled(Body)`
 `
 
 export const CategoryAndPublishTime = styled.div`
-  font-family: var(--font-open-sans);
   display: flex;
   justify-content: space-between;
   align-items: center;

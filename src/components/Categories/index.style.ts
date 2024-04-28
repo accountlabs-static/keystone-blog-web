@@ -3,6 +3,7 @@ import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 import { H6 } from '../styles/heading'
 
 export const CategoriesWrapper = styled.div`
+  font-family: var(--font-neue-kaine);
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -25,7 +26,7 @@ const activedCategoryLabelCss = css`
   border-color: var(--quote-border-color);
 `
 
-export const CategoryLable = styled(H6) <{ $actived: boolean }>`
+export const CategoryLable = styled(H6)<{ $actived: boolean }>`
   color: var(--publish-time-color);
   padding: 8px 16px;
   border-radius: 32px;

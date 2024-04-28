@@ -55,8 +55,8 @@ export const PostInfo = styled.div`
 `
 
 export const PublishTime = styled(Body)`
+  font-family: var(--font-neue-kaine);
   display: inline-block;
   margin-top: 16px;
-  font-family: var(--font-open-sans);
   color: var(--publish-time-color);
 `

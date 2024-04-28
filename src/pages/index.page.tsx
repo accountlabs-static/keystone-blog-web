@@ -1,37 +1,34 @@
-import React, { FC } from 'react';
-import { GetStaticProps } from 'next';
-import { getHeroPosts, getPostsByCategory } from '@/utils/api';
-import { Category } from '@/constants/categories';
-import { Homepage } from '@/types/homePageType';
-import HomeLayout from '@/components/Layout/home';
-import { AllCategories } from '@/components/HomeCategories/All';
-import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links';
-import Head from 'next/head';
+import React, { FC } from 'react'
+import { GetStaticProps } from 'next'
+import { getHeroPosts, getPostsLatests } from '@/utils/api'
+import { Homepage } from '@/types/homePageType'
+import HomeLayout from '@/components/Layout/home'
+import { AllCategories } from '@/components/HomeCategories/All'
+import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links'
+import Head from 'next/head'
 
 interface HomeProps {
   homepage: Homepage
 }
 
 const Home: FC<HomeProps> = ({ homepage }) => {
-
   return (
     <>
       <Head>
         <title>Keystone&apos;s Blog</title>
         <meta name="description" content={homepage.description} />
-        <link rel='canonical' href={BLOG_HOME_PAGE} />
+        <link rel="canonical" href={BLOG_HOME_PAGE} />
         <meta property="og:title" content="Keystone's Blog" />
         <meta property="og:description" content={homepage.description} />
-        <meta property="og:image" content={`${IMAGE_CDN}/homepage.png`}/>
-        <meta property="og:url" content={BLOG_HOME_PAGE}/>
+        <meta property="og:image" content={`${IMAGE_CDN}/homepage.png`} />
+        <meta property="og:url" content={BLOG_HOME_PAGE} />
       </Head>
       <HomeLayout description={homepage.description}>
-        <AllCategories homepage={homepage} />,
+        <AllCategories homepage={homepage} />
       </HomeLayout>
     </>
-
-  );
-};
+  )
+}
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const POST_COUNT = 9
@@ -40,7 +37,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   try {
     return {
       props: {
-        homepage:{
+        homepage: {
           description: heroPosts.description,
           heroPost: heroPosts.hero_post.data,
           subHeroFirst: heroPosts.sub_hero_first.data,

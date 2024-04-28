@@ -8,8 +8,8 @@ import { OtherCategories } from '@/components/HomeCategories/Other'
 import { slugToCategoryEnum, slugToTitle } from '@/utils/helpers'
 import { Post } from '@/types/postDetailPageType'
 import { postConverter } from '../[post]/utils'
-import Head from 'next/head';
-import { BLOG_HOME_PAGE, IMAGE_CDN } from '@/constants/links';
+import Head from 'next/head'
+import { BLOG_HOME_PAGE, IMAGE_CDN } from '@/constants/links'
 
 interface CategoriesPageProps {
   errorCode?: number
@@ -26,26 +26,26 @@ const CategoryPage: FC<CategoriesPageProps> = ({
   posts,
   category,
   slug,
-  title
+  title,
 }) => {
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
 
-  const categoryURL = `${BLOG_HOME_PAGE}/${slug}`;
+  const categoryURL = `${BLOG_HOME_PAGE}/${slug}`
 
   return (
     <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={homeDescription} />
-        <link rel='canonical' href={categoryURL} />
+        <link rel="canonical" href={categoryURL} />
         <meta property="og:site_name" content="Keystone's Blog" />
-        <meta property="og:type" content='website' />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={homeDescription} />
-        <meta property="og:image" content={`${IMAGE_CDN}/homepage.png`}/>
-        <meta property="og:url" content={categoryURL}/>
+        <meta property="og:image" content={`${IMAGE_CDN}/homepage.png`} />
+        <meta property="og:url" content={categoryURL} />
       </Head>
       <HomeLayout description={homeDescription}>
         <OtherCategories title={title} category={category} posts={posts} />
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async ({
   params,
 }) => {
   const POST_COUNT_IN_CATEGORY = 5
-  const categorySlug = params.category as string;
+  const categorySlug = params.category as string
   const category = slugToCategoryEnum(params.category as string) as Category
   const categoryTitle = slugToTitle(params.category as string) as Category
 
