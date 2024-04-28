@@ -8,7 +8,8 @@ export interface Post {
   locale: string;
   slug: string;
   hero_image: HeroImage;
-  published_time: string
+  published_time: string;
+  seo?: SEO;
 }
 
 export interface HeroImage {
@@ -19,6 +20,16 @@ export interface HeroImage {
       url: string;
     };
   };
+}
+
+export interface SEO {
+  metaTitle: string,
+  metaDescription: string,
+  keywords?: string,
+  metaRobots?: string,
+  structuredData?: string,
+  metaViewport?: string,
+  canonicalURL?: string,
 }
 
 export interface PostModel {
@@ -32,5 +43,10 @@ export interface PostModel {
     url: string;
     alt: string;
   };
+  seo: {
+    title: string;
+    description: string;
+    canonicalURL: string
+  }
 }
 

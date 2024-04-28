@@ -9,10 +9,11 @@ import { postConverter } from '@/pages/[post]/utils'
 
 interface Props {
   category: CategoryActivedType
+  title: string
   posts: Post[]
 }
 
-export function OtherCategories({ category, posts }: Props) {
+export function OtherCategories({ category, title, posts }: Props) {
   const [list, setList] = useState(posts)
   const [isHasNew, setIsHasNew] = useState(true)
 
@@ -33,7 +34,7 @@ export function OtherCategories({ category, posts }: Props) {
 
   return (
     <>
-      <CategoryName>{category}</CategoryName>
+      <CategoryName>{title}</CategoryName>
       <Posts>
         {list.map((it) => (
           <PostItem post={it as unknown as PostModel} key={it.slug} />
