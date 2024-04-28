@@ -221,6 +221,13 @@ export const BodyText = styled.div`
       line-height: 24px;
     }
   }
+  pre {
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow: auto;
+  }
   .twitter-tweet {
     margin-right: auto;
     margin-left: auto;
