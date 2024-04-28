@@ -24,7 +24,7 @@ export function OtherCategories({ category, title, posts }: Props) {
 
   const loadMore = useCallback(async () => {
     const newList = (
-      await getPostsByCategory(category as Category, 5, list.length)
+      await getPostsByCategory(Category[category] as Category, 5, list.length)
     )
       .map((it) => postConverter(it.attributes))
       .map((it) => ({ ...it, slug: `/${it.slug}` }))

@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async ({
   const POST_COUNT_IN_CATEGORY = 5
   const categorySlug = params.category as string;
   const category = slugToCategoryEnum(params.category as string) as Category
-  const categoryTitle = slugToTitle(params.category as string)
+  const categoryTitle = slugToTitle(params.category as string) as Category
 
   if (!(category in Category)) {
     return {
@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps<CategoriesPageProps> = async ({
 
   const heroPosts = await getHeroPosts()
   const posts = (
-    await getPostsByCategory(category, POST_COUNT_IN_CATEGORY)
+    await getPostsByCategory(categoryTitle, POST_COUNT_IN_CATEGORY)
   )
     .map((it) => postConverter(it.attributes))
     .map((it) => ({ ...it, slug: `/${it.slug}` }))
