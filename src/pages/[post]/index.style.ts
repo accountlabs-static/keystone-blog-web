@@ -233,7 +233,7 @@ export const BodyText = styled.div`
     margin-left: auto;
   }
   img {
-    width: 520px;
+    width: 100%;
     padding: 0 180px;
     background-color: var(--quote-bg-color);
     @media ${DEVICE_QUERY_MOBILE} {
