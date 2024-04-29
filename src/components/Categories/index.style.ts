@@ -27,7 +27,7 @@ const activedCategoryLabelCss = css`
 `
 
 export const CategoryLable = styled(H6)<{ $actived: boolean }>`
-  color: var(--publish-time-color);
+  color: var(--fg-muted-color);
   padding: 8px 16px;
   border-radius: 32px;
   border: 1px solid var(--category-border-color);

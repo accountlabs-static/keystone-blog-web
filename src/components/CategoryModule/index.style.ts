@@ -15,6 +15,7 @@ export const CategoryModuleWrapper = styled.div`
 `
 
 export const CategoryName = styled(H4)`
+  font-family: var(--font-neue-kaine);
   font-size: 32px;
   font-weight: 600;
   line-height: 48px;

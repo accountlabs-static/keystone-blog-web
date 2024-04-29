@@ -69,7 +69,7 @@ const MainSiteModule: FC = () => {
           ))}
         </Links>
         <Title>Keystone Hardware Wallet</Title>
-        <Description>Full Open Source</Description>
+        <Description>Both hardware & software are open-source</Description>
         <Explore href={MAIN_SITE}>
           Explore Keystone
           <ArrowRight height="18" width="18" />

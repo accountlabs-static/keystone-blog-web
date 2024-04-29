@@ -15,6 +15,7 @@
   --category-border-color: #e1e5f0;
   --mobile-padding: 24px;
   --fg-subtle-color: #9397a3;
+  --fg-muted-color: #5d657a;
   --bd-primary-color: #1f5aff;
 
   --font-neue-kaine: 'Neue Kaine';
@@ -54,5 +55,5 @@ h6 {
 }
 
 ul li {
-  margin: 10px 0;
+  margin: 16px 0;
 }

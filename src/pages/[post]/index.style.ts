@@ -235,7 +235,7 @@ export const BodyText = styled.div`
   img {
     width: 100%;
     padding: 0 180px;
-    background-color: var(--quote-bg-color);
+    background-color: white;
     @media ${DEVICE_QUERY_MOBILE} {
       width: 100%;
       padding: 0;
@@ -246,8 +246,10 @@ export const BodyText = styled.div`
   }
   li {
     font-size: 18px;
+    line-height: 28px;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 16px;
+      line-height: 24px;
     }
   }
   blockquote {
