@@ -58,6 +58,21 @@ export async function getHeroPosts() {
   return heroPostsRes.data.attributes
 }
 
+export async function getPostsLatests(count: number) {
+  const posts = await fetchAPI('/posts', {
+    populate: {
+      hero_image: {
+        fields: ['name', 'url'],
+      },
+    },
+    pagination: {
+      limit: count,
+    },
+    sort: ['publishedAt:desc'],
+  })
+  return posts.data
+}
+
 export async function getPostsByCategory(
   category: Category,
   count: number,

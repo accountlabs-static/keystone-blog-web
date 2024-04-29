@@ -1,8 +1,8 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import PostDetail from './index.page';
-import '@testing-library/jest-dom';
-import { getPublishTime } from './utils';
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import PostDetail from './index.page'
+import '@testing-library/jest-dom'
+import { getPublishTime } from './utils'
 
 describe('<PostDetail />', () => {
   test('renders the example component', () => {
@@ -24,16 +24,16 @@ describe('<PostDetail />', () => {
           },
         },
       },
-      published_time: '2024-03-20',
-    };
-    render(<PostDetail post={mockPost} />);
-    const postDetail = screen.getByText(mockPost.title);
-    expect(postDetail).toBeInTheDocument();
-  });
+      published_at: '2024-03-20',
+    }
+    render(<PostDetail post={mockPost} />)
+    const postDetail = screen.getByText(mockPost.title)
+    expect(postDetail).toBeInTheDocument()
+  })
 
   test('should get correct time format', () => {
-    const publishedAt = '2024-03-20T05:30:57.799Z';
-    const publishTime = 'Mar 20, 2024';
-    expect(getPublishTime(publishedAt)).toEqual(publishTime);
-  });
-});
+    const publishedAt = '2024-03-20T05:30:57.799Z'
+    const publishTime = 'Mar 20, 2024'
+    expect(getPublishTime(publishedAt)).toEqual(publishTime)
+  })
+})

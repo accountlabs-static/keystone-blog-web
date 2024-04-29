@@ -23,7 +23,8 @@ import { postConverter } from './utils'
 import { Post } from '@/types/postDetailPageType'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import Error from 'next/error'
-import Head from 'next/head';
+import Head from 'next/head'
+import Link from 'next/link'
 
 interface PostProps {
   post?: Post
@@ -43,14 +44,15 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
       <Head>
         <title>{postModel.seo.title}</title>
         <meta name="description" content={postModel.seo.description} />
-        <link rel='canonical' href={postModel.seo.canonicalURL} />
+        <link rel="canonical" href={postModel.seo.canonicalURL} />
         <meta property="og:site_name" content="Keystone's Blog" />
-        <meta property="og:type" content='article' />
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={postModel.seo.title} />
         <meta property="og:description" content={postModel.seo.description} />
-        <meta property="og:image" content={postModel.heroImage.url}/>
-        <meta property="og:url" content={postModel.seo.canonicalURL}/>
+        <meta property="og:image" content={postModel.heroImage.url} />
+        <meta property="og:url" content={postModel.seo.canonicalURL} />
       </Head>
+
       <PostContainer>
         <TopBanner>
           <PostInfo>
@@ -76,12 +78,17 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
           </picture>
         </TopBanner>
         <BackToHome>
-          <a href="/">
+          <Link href="/">
             <picture>
-              <img src="/left-arrow.svg" alt="" />
+              <img
+                src="/left-arrow.svg"
+                width="24"
+                height="24"
+                alt="blog home"
+              />
             </picture>
             <span>Blog Home</span>
-          </a>
+          </Link>
         </BackToHome>
         <BodyText>
           <div

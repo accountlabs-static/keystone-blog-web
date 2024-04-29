@@ -1,22 +1,22 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
+import { Body } from '../styles/text'
 
 export const HomeWrapper = styled.div`
   padding-bottom: 148px;
   @media ${DEVICE_QUERY_MOBILE} {
     padding-bottom: 128px;
   }
-`;
+`
 
 export const HomeMain = styled.div`
   width: 1280px;
   margin: 0 auto;
   @media ${DEVICE_QUERY_MOBILE} {
-    margin: 0;
-    padding: 0 24px;
-    width: calc(100vw - var(--mobile-padding) * 2);
+    width: 100vw;
+    padding: 0 var(--mobile-padding);
   }
-`;
+`
 
 export const TopBanner = styled.div`
   background-color: var(--banner-bg-color);
@@ -33,7 +33,7 @@ export const TopBanner = styled.div`
       height: auto;
     }
   }
-`;
+`
 export const TitleAndDescription = styled.div`
   width: 520px;
   color: var(--title-color);
@@ -46,7 +46,7 @@ export const TitleAndDescription = styled.div`
     align-items: center;
     margin: 0 auto;
   }
-`;
+`
 
 export const Title = styled.h1`
   width: 560px;
@@ -65,15 +65,12 @@ export const Title = styled.h1`
     line-height: 44px;
     margin-bottom: 16px;
   }
-`;
+`
 
-export const Description = styled.div`
+export const Description = styled(Body)`
   font-family: var(--font-open-sans);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;
   }
-`;
+`

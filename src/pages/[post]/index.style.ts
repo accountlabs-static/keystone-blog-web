@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints';
+import styled from 'styled-components'
+import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
 
-export const PostContainer = styled.div``;
+export const PostContainer = styled.div``
 
 export const TopBanner = styled.div`
   background-color: var(--banner-bg-color);
@@ -23,7 +23,7 @@ export const TopBanner = styled.div`
       height: auto;
     }
   }
-`;
+`
 
 export const PostInfo = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ export const PostInfo = styled.div`
   @media ${DEVICE_QUERY_MOBILE} {
     margin-right: 0;
   }
-`;
+`
 
 export const Title = styled.h1`
   color: var(--title-color);
@@ -53,7 +53,7 @@ export const Title = styled.h1`
     line-height: 32px;
     margin-bottom: 16px;
   }
-`;
+`
 
 export const Category = styled.span`
   background: ${(props) => props.color};
@@ -69,9 +69,9 @@ export const Category = styled.span`
     font-size: 12px;
     line-height: 18px;
   }
-`;
+`
 
-export const PublishTime = styled.div``;
+export const PublishTime = styled.div``
 
 export const PublishTimeAndReadingTime = styled.div`
   align-items: center;
@@ -89,9 +89,9 @@ export const PublishTimeAndReadingTime = styled.div`
     font-weight: 600;
     margin-bottom: 40px;
   }
-`;
+`
 
-export const ReadingTime = styled.div``;
+export const ReadingTime = styled.div``
 
 export const BackToHome = styled.div`
   padding: 24px 0;
@@ -123,7 +123,7 @@ export const BackToHome = styled.div`
     width: calc(100vw - var(--mobile-padding) * 2);
     margin-bottom: 0;
   }
-`;
+`
 
 export const BodyText = styled.div`
   font-family: var(--font-open-sans);
@@ -135,6 +135,42 @@ export const BodyText = styled.div`
     padding: 32px 24px 40px 24px;
     margin: 0 auto;
   }
+
+  h1 {
+    margin: 0.67em 0;
+  }
+
+  h2 {
+    margin: 0.75em 0;
+  }
+
+  h3 {
+    margin: 0.83em 0;
+  }
+
+  h4,
+  p,
+  blockquote,
+  ul,
+  fieldset,
+  form,
+  ol,
+  dl,
+  dir,
+  menu {
+    margin: 1.12em 0;
+  }
+
+  h5 {
+    font-size: 0.83em;
+    margin: 1.5em 0;
+  }
+
+  h6 {
+    font-size: 0.75em;
+    margin: 1.67em 0;
+  }
+
   a {
     color: var(--link-color);
     text-decoration: none;
@@ -158,9 +194,8 @@ export const BodyText = styled.div`
     }
   }
   h2 {
-    font-family: var(--font-montserrat);
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 733;
     line-height: 36px;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 18px;
@@ -168,10 +203,9 @@ export const BodyText = styled.div`
     }
   }
   h3 {
-    font-family: var(--font-montserrat);
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
+    font-size: 18px;
+    font-weight: 733;
+    line-height: 28px;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 14px;
       line-height: 22px;
@@ -187,14 +221,21 @@ export const BodyText = styled.div`
       line-height: 24px;
     }
   }
+  pre {
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow: auto;
+  }
   .twitter-tweet {
     margin-right: auto;
     margin-left: auto;
   }
   img {
-    width: 520px;
+    width: 100%;
     padding: 0 180px;
-    background-color: var(--quote-bg-color);
+    background-color: white;
     @media ${DEVICE_QUERY_MOBILE} {
       width: 100%;
       padding: 0;
@@ -204,11 +245,11 @@ export const BodyText = styled.div`
     padding-left: 16px;
   }
   li {
-    margin-top: 20px;
-    margin-bottom: 20px;
     font-size: 18px;
+    line-height: 28px;
     @media ${DEVICE_QUERY_MOBILE} {
       font-size: 16px;
+      line-height: 24px;
     }
   }
   blockquote {
@@ -257,4 +298,4 @@ export const BodyText = styled.div`
       }
     }
   }
-`;
+`

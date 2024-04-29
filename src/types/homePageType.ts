@@ -25,12 +25,7 @@ export interface Homepage {
   heroPost: Post
   subHeroFirst: Post
   subHeroSecond: Post
-  [Category.HardwareWallet]: Post[]
-  [Category.CryptoSecurity]: Post[]
-  [Category.Bitcoin]: Post[]
-  [Category.Partnerships]: Post[]
-  [Category.Enterprise]: Post[]
-  [Category.Other]: Post[]
+  latests: Post[]
 }
 
 export interface HomepageModule {
@@ -38,12 +33,7 @@ export interface HomepageModule {
   heroPost: PostModel
   subHeroFirst: PostModel
   subHeroSecond: PostModel
-  [HardwareWallet]: PostModel[]
-  [CryptoSecurity]: PostModel[]
-  [Bitcoin]: PostModel[]
-  [Partnerships]: PostModel[]
-  [Enterprise]: PostModel[]
-  [Other]: PostModel[]
+  latests: PostModel[]
 }
 
 export interface Post {
@@ -66,7 +56,7 @@ export interface Post {
         }
       }
     }
-    published_time: string
+    published_at: string
   }
 }
 

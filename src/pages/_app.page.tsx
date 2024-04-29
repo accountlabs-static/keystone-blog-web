@@ -3,6 +3,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import '../styles/global.css'
 import '../styles/fonts.css'
+import 'gardevoir'
 import { mont_serrat, open_sans } from '../styles/font'
 
 export default function App({ Component, pageProps }: AppProps) {

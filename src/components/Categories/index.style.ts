@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
+import { H6 } from '../styles/heading'
 
 export const CategoriesWrapper = styled.div`
+  font-family: var(--font-neue-kaine);
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -24,12 +26,8 @@ const activedCategoryLabelCss = css`
   border-color: var(--quote-border-color);
 `
 
-export const CategoryLable = styled.span<{ $actived: boolean }>`
-  font-family: var(--font-bebas-neue);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22px;
-  color: var(--publish-time-color);
+export const CategoryLable = styled(H6)<{ $actived: boolean }>`
+  color: var(--fg-muted-color);
   padding: 8px 16px;
   border-radius: 32px;
   border: 1px solid var(--category-border-color);
@@ -39,9 +37,9 @@ export const CategoryLable = styled.span<{ $actived: boolean }>`
     ${activedCategoryLabelCss}
   }
   @media ${DEVICE_QUERY_MOBILE} {
-    font-size: 12px;
-    line-height: 18px;
     display: inline-block;
     margin-right: 8px;
+    font-size: 12px;
+    line-height: 18px;
   }
 `

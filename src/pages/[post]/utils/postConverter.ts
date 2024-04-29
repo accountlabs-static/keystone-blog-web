@@ -1,12 +1,16 @@
-import { Post, PostModel } from '@/types/postDetailPageType';
-import { BLOG_HOME_PAGE } from '@/constants/links';
-import markedAlert from 'marked-alert';
-import { getMarkDownParser } from './markdown';
+import { Post, PostModel } from '@/types/postDetailPageType'
+import { BLOG_HOME_PAGE } from '@/constants/links'
+import markedAlert from 'marked-alert'
+import { getMarkDownParser } from './markdown'
 
 export const getPublishTime = (publishAt: string) => {
-  const date = new Date(publishAt);
-  const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' });
-  return formattedDate;
+  const date = new Date(publishAt)
+  const formattedDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  })
+  return formattedDate
 }
 
 const postBodyConverter = (postBody: string): string => {
@@ -20,7 +24,7 @@ export const postConverter = (post: Post): PostModel => {
     bodyText: postBodyConverter(post.body_text),
     title: post.title,
     category: post.category,
-    publishTime: getPublishTime(post.published_time ?? post.publishedAt),
+    publishTime: getPublishTime(post.publishedAt),
     locale: post.locale,
     slug: post.slug,
     heroImage: {
@@ -31,6 +35,6 @@ export const postConverter = (post: Post): PostModel => {
       title: post.seo?.metaTitle || `${post.title} | Keystone Hardware Wallet`,
       description: post.seo?.metaDescription || post.title,
       canonicalURL: post.seo?.canonicalURL || `${BLOG_HOME_PAGE}/${post.slug}`,
-    }
-  };
-};
+    },
+  }
+}

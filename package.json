@@ -14,6 +14,7 @@
   "packagerManager": "pnpm@8.15.6",
   "dependencies": {
     "@next/third-parties": "14.2.1",
+    "gardevoir": "^1.0.0",
     "header-footer": "git+https://keystonehq:${GITHUB_TOKEN}@github.com/KeystoneHQ/header-footer-components.git",
     "marked": "12.0.1",
     "marked-alert": "2.0.1",
