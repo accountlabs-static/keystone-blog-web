@@ -1,5 +1,6 @@
 import styled, {css } from 'styled-components'
 import { DEVICE_QUERY_MOBILE } from '@/styles/breakpoints'
+import Link from 'next/link';
 
 export const PostContainer = styled.div``
 
@@ -119,7 +120,7 @@ const HoverStyle = css`
     }
   }
 `
-export const BackToHome = styled.a`
+export const BackToHome = styled(Link)`
   ${HoverStyle}
   .active {
     left: 0;

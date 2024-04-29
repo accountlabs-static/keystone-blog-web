@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   BackToHome,
   BackToHomeAndShare,
@@ -28,7 +28,8 @@ import Error from 'next/error'
 import Popover from '@/components/Popover'
 import Media from '@/components/Media'
 import Head from 'next/head'
-import Link from 'next/link'
+import { BLOG_HOME_PAGE } from '@/constants/links'
+import Notification from '@/components/Notification'
 
 interface PostProps {
   post?: Post
@@ -36,6 +37,9 @@ interface PostProps {
 }
 
 const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
+  const [isShowNotification, setIsShowNotification] = useState(false);
+  const [message, setMessage] = useState('');
+  
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
@@ -53,6 +57,8 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={postModel.seo.title} />
         <meta property="og:description" content={postModel.seo.description} />
+        <meta property="og:image" content={postModel.heroImage.url} />
+        <meta property="og:url" content={postModel.seo.canonicalURL} />
         <meta property="og:image" content={postModel.heroImage.url} />
         <meta property="og:url" content={postModel.seo.canonicalURL} />
       </Head>
@@ -90,19 +96,19 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
             <span>Blog Home</span>
           </BackToHome>
           <Popover
-            placement="top"
+            placement="topRight"
             transition="slide bottom-10"
-            content={<Media url={`https://blog.keyst.one/${post.slug}`} />} 
+            content={<Media url={`${BLOG_HOME_PAGE}${post.slug}`} setIsShowNotification={() => setIsShowNotification(true)} setMessage={setMessage} />}
           >
             <Share>
               <span>Share</span>
-    
               <picture>
                 <img src="/share.svg" className="default" alt="" loading="lazy" />
                 <img src="/share-active.svg" className="active" alt="" loading="lazy" />
               </picture>
             </Share>
           </Popover>
+          {isShowNotification && <Notification onClose={() => setIsShowNotification(false)} message={message} type='success' />}
         </BackToHomeAndShare>
         <BodyText>
           <div

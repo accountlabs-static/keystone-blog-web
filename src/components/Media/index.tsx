@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { MediaWrapper } from './index.style'
 import {
   FacebookShareButton,
@@ -7,22 +7,32 @@ import {
 } from 'react-share'
 import Image from 'next/image'
 
-const Media: FC<{ url: string }> = ({ url }) => {
-  const [isCopied, setIsCopied] = useState(false)
+interface MediaProps {
+  url: string,
+  setIsShowNotification: Function,
+  setMessage: Function,
+}
+const Media: FC<MediaProps> = ({ url, setIsShowNotification, setMessage }) => {
   const copyLink = () => {
     navigator.clipboard
       .writeText(url)
-      .then(() => setIsCopied(true))
-      .catch((e) => setIsCopied(false))
+      .then(() => {
+        setIsShowNotification()
+        setMessage('Link copied!')
+      })
+      .catch((e) => {
+        setIsShowNotification()
+        setMessage('Copy link failed!')
+      })
   }
   return (
     <MediaWrapper>
-      <FacebookShareButton url={url}>
-        <Image src="/facebook-circle.svg" alt="facebook" width={24} height={24} />
-      </FacebookShareButton>
       <TwitterShareButton url={url}>
         <Image src="/twitter-circle.svg" alt="twitter" width={24} height={24}/>
       </TwitterShareButton>
+      <FacebookShareButton url={url}>
+        <Image src="/facebook-circle.svg" alt="facebook" width={24} height={24} />
+      </FacebookShareButton>
       <LinkedinShareButton url={url}>
         <Image src="/linkedin-circle.svg" alt="linkedin" width={24} height={24}/>
       </LinkedinShareButton>

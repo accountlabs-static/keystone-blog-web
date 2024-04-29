@@ -43,16 +43,4 @@ export const PopoverContainer = styled.div.attrs<{ placement: string }>({
   overflow: hidden;
   z-index: 10;
   transition: var(--transition);
-  &::before {
-    content: '';
-    position: absolute;
-    top: 250px;
-    left: 174px;
-    border-style: solid;
-    border-width: 26px 26px 0;
-    border-color: var(--popover-color) transparent;
-    display: block;
-    width: 0;
-    z-index: 0;
-  }
 `
