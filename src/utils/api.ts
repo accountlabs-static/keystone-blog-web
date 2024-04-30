@@ -58,7 +58,7 @@ export async function getHeroPosts() {
   return heroPostsRes.data.attributes
 }
 
-export async function getPostsLatests(count: number) {
+export async function getPostsLatests(count: number, skip: number = 0) {
   const posts = await fetchAPI('/posts', {
     populate: {
       hero_image: {
@@ -66,6 +66,7 @@ export async function getPostsLatests(count: number) {
       },
     },
     pagination: {
+      start: skip,
       limit: count,
     },
     sort: ['publishedAt:desc'],
