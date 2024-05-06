@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   BackToHome,
+  BackToHomeAndShare,
   BodyText,
   Category,
   PostContainer,
@@ -8,6 +9,7 @@ import {
   PublishTime,
   PublishTimeAndReadingTime,
   ReadingTime,
+  Share,
   Title,
   TopBanner,
 } from './index.style'
@@ -23,8 +25,11 @@ import { postConverter } from './utils'
 import { Post } from '@/types/postDetailPageType'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import Error from 'next/error'
+import Popover from '@/components/Popover'
+import Media from '@/components/Media'
 import Head from 'next/head'
-import Link from 'next/link'
+import { BLOG_HOME_PAGE } from '@/constants/links'
+import Notification from '@/components/Notification'
 
 interface PostProps {
   post?: Post
@@ -32,6 +37,9 @@ interface PostProps {
 }
 
 const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
+  const [isShowNotification, setIsShowNotification] = useState(false);
+  const [message, setMessage] = useState('');
+
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
@@ -49,6 +57,8 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={postModel.seo.title} />
         <meta property="og:description" content={postModel.seo.description} />
+        <meta property="og:image" content={postModel.heroImage.url} />
+        <meta property="og:url" content={postModel.seo.canonicalURL} />
         <meta property="og:image" content={postModel.heroImage.url} />
         <meta property="og:url" content={postModel.seo.canonicalURL} />
       </Head>
@@ -77,19 +87,29 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
             />
           </picture>
         </TopBanner>
-        <BackToHome>
-          <Link href="/">
+        <BackToHomeAndShare>
+          <BackToHome href="/">
             <picture>
-              <img
-                src="/left-arrow.svg"
-                width="24"
-                height="24"
-                alt="blog home"
-              />
+              <img src="/left-arrow.svg" className="default" alt="" loading="lazy" />
+              <img src="/left-arrow-active.svg" className="active" alt="" loading="lazy" />
             </picture>
             <span>Blog Home</span>
-          </Link>
-        </BackToHome>
+          </BackToHome>
+          <Popover
+            placement="topRight"
+            transition="slide bottom-10"
+            content={<Media url={`${BLOG_HOME_PAGE}/${post.slug}`} setIsShowNotification={() => setIsShowNotification(true)} setMessage={setMessage} />}
+          >
+            <Share>
+              <span>Share</span>
+              <picture>
+                <img src="/share.svg" className="default" alt="" loading="lazy" />
+                <img src="/share-active.svg" className="active" alt="" loading="lazy" />
+              </picture>
+            </Share>
+          </Popover>
+          {isShowNotification && <Notification onClose={() => setIsShowNotification(false)} message={message} type='success' />}
+        </BackToHomeAndShare>
         <BodyText>
           <div
             dangerouslySetInnerHTML={{
