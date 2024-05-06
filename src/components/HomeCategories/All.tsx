@@ -17,9 +17,15 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
   const [isHasNew, setIsHasNew] = useState(true)
 
   const loadMore = useCallback(async () => {
-    const newList = (await getPostsLatests(POST_COUNT, list.length))
-      .map((it) => postConverter(it.attributes))
-      .map((it) => ({ ...it, slug: `/${it.slug}` }))
+    const newList = (await getPostsLatests(POST_COUNT, list.length)).map(
+      (it) => {
+        const data = postConverter(it.attributes)
+        return {
+          ...data,
+          slut: data.slug,
+        }
+      }
+    )
     setList((data) => data.concat(newList))
     setIsHasNew(newList.length >= POST_COUNT)
   }, [list.length])
