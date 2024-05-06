@@ -12,6 +12,7 @@ interface MediaProps {
   setIsShowNotification: Function,
   setMessage: Function,
 }
+
 const Media: FC<MediaProps> = ({ url, setIsShowNotification, setMessage }) => {
   const copyLink = () => {
     navigator.clipboard

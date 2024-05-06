@@ -8,7 +8,7 @@ export const NotificationWrapper = styled.div`
   background-color: var(--notification-bg-color);
   border: 1px solid var(--notification-border-color);
   justify-content: center;
-  top: 80px;
+  top: 60vh;
   transition: top var(--transition);
   padding: 6px 16px;
   width: auto;
@@ -25,4 +25,4 @@ export const Desc = styled.span`
     line-height: 16px;
   }
   max-width: 640px;
-`;
+`

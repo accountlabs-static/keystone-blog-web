@@ -6,7 +6,7 @@ interface NotificationProps {
   message: string,
   type: string
 }
-const Notification  : FC<NotificationProps> = ({ onClose, message, type }) => {
+const Notification: FC<NotificationProps> = ({ onClose, message }) => {
   const [toastVisible, setToastVisible] = useState(true);
 
   useEffect(() => {

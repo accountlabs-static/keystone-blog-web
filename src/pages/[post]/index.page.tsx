@@ -39,7 +39,7 @@ interface PostProps {
 const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
   const [isShowNotification, setIsShowNotification] = useState(false);
   const [message, setMessage] = useState('');
-  
+
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
@@ -98,7 +98,7 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
           <Popover
             placement="topRight"
             transition="slide bottom-10"
-            content={<Media url={`${BLOG_HOME_PAGE}${post.slug}`} setIsShowNotification={() => setIsShowNotification(true)} setMessage={setMessage} />}
+            content={<Media url={`${BLOG_HOME_PAGE}/${post.slug}`} setIsShowNotification={() => setIsShowNotification(true)} setMessage={setMessage} />}
           >
             <Share>
               <span>Share</span>
