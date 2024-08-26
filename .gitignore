@@ -1,5 +1,8 @@
 node_modules
 .next
+.yalc
 .DS_Store
 .env*
 pnpm-lock.yaml
+yalc.lock
+.vercel
