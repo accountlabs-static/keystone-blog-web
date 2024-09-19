@@ -13,7 +13,7 @@ import {
   Title,
   TopBanner,
 } from './index.style'
-import { fetchAPI } from '@/utils/api'
+import { fetchAPI, getRedirects } from '@/utils/api'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import readingTime from 'reading-time'
 import vector from '@/../public/vector.svg'
@@ -37,8 +37,8 @@ interface PostProps {
 }
 
 const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
-  const [isShowNotification, setIsShowNotification] = useState(false);
-  const [message, setMessage] = useState('');
+  const [isShowNotification, setIsShowNotification] = useState(false)
+  const [message, setMessage] = useState('')
 
   if (errorCode) {
     return <Error statusCode={errorCode} />
@@ -90,25 +90,57 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
         <BackToHomeAndShare>
           <BackToHome href="/">
             <picture>
-              <img src="/left-arrow.svg" className="default" alt="" loading="lazy" />
-              <img src="/left-arrow-active.svg" className="active" alt="" loading="lazy" />
+              <img
+                src="/left-arrow.svg"
+                className="default"
+                alt=""
+                loading="lazy"
+              />
+              <img
+                src="/left-arrow-active.svg"
+                className="active"
+                alt=""
+                loading="lazy"
+              />
             </picture>
             <span>Blog Home</span>
           </BackToHome>
           <Popover
             placement="topRight"
             transition="slide bottom-10"
-            content={<Media url={`${BLOG_HOME_PAGE}/${post.slug}`} setIsShowNotification={() => setIsShowNotification(true)} setMessage={setMessage} />}
+            content={
+              <Media
+                url={`${BLOG_HOME_PAGE}/${post.slug}`}
+                setIsShowNotification={() => setIsShowNotification(true)}
+                setMessage={setMessage}
+              />
+            }
           >
             <Share>
               <span>Share</span>
               <picture>
-                <img src="/share.svg" className="default" alt="" loading="lazy" />
-                <img src="/share-active.svg" className="active" alt="" loading="lazy" />
+                <img
+                  src="/share.svg"
+                  className="default"
+                  alt=""
+                  loading="lazy"
+                />
+                <img
+                  src="/share-active.svg"
+                  className="active"
+                  alt=""
+                  loading="lazy"
+                />
               </picture>
             </Share>
           </Popover>
-          {isShowNotification && <Notification onClose={() => setIsShowNotification(false)} message={message} type='success' />}
+          {isShowNotification && (
+            <Notification
+              onClose={() => setIsShowNotification(false)}
+              message={message}
+              type="success"
+            />
+          )}
         </BackToHomeAndShare>
         <BodyText>
           <div
@@ -126,17 +158,32 @@ const PostDetail: FC<PostProps> = ({ post, errorCode }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const articlesRes = await fetchAPI('/posts', { fields: ['slug'] })
 
+  const paths = articlesRes?.data?.map((article) => ({
+    params: {
+      post: article.attributes?.slug,
+    },
+  }))
+
   return {
-    paths: articlesRes.data.map((article) => ({
-      params: {
-        post: `${article.attributes.slug}`,
-      },
-    })),
+    paths,
     fallback: 'blocking',
   }
 }
 
 export const getStaticProps: GetStaticProps<PostProps> = async ({ params }) => {
+  const { redirects } = await getRedirects()
+  const hasRedirect = redirects.find((it) => it.from === `/${params.post}`)
+
+  if (hasRedirect) {
+    const toPost = hasRedirect.to.slice(1)
+    return {
+      redirect: {
+        destination: toPost,
+        statusCode: 301,
+      },
+    }
+  }
+
   const articlesRes = await fetchAPI('/posts', {
     filters: {
       slug: params.post,

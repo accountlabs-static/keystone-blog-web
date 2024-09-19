@@ -98,3 +98,9 @@ export async function getPostsByCategory(
   })
   return posts.data
 }
+
+export async function getRedirects() {
+  const redirects = await fetchAPI('/redirects')
+
+  return redirects
+}
