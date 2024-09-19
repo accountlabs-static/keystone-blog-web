@@ -1,9 +1,10 @@
 import React from 'react'
 import readingTime from 'reading-time'
 import { postConverter } from './utils'
-import { fetchAPI, getPostsAll } from '@/utils/api'
+import { fetchAPI, getPostsAll, getRedirects } from '@/utils/api'
 import Content from './Content'
 import { Metadata, ResolvingMetadata } from 'next'
+import { notFound, redirect } from 'next/navigation'
 
 export async function generateMetadata(
   params: any,
@@ -30,13 +31,13 @@ export async function generateMetadata(
   const postModel = postConverter(article.attributes)
 
   return {
-    title: 'Keystone\'s Blog',
+    title: "Keystone's Blog",
     description: postModel.seo.description,
     alternates: {
       canonical: postModel.seo.canonicalURL,
     },
     openGraph: {
-      siteName: 'Keystone\'s Blog',
+      siteName: "Keystone's Blog",
       type: 'article',
       title: postModel.seo.title,
       description: postModel.seo.description,
@@ -60,6 +61,15 @@ export default async function PostDetail({
   }
 }) {
   const { post } = params
+
+  const redirects = await getRedirects()
+  const hasRedirect = redirects.find((it) => it.from === `/${post}`)
+
+  if (hasRedirect) {
+    const toPost = hasRedirect.to.slice(1)
+    redirect(toPost)
+  }
+
   const articlesRes = await fetchAPI('/posts', {
     filters: {
       slug: post,
@@ -72,9 +82,7 @@ export default async function PostDetail({
   })
 
   if (!articlesRes.data[0]) {
-    return {
-      errorCode: 404,
-    }
+    notFound()
   }
 
   const article = articlesRes.data[0]

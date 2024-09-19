@@ -22,8 +22,9 @@ export async function fetchAPI(
   const response = await fetch(requestUrl, mergedOptions)
 
   if (!response.ok) {
-    console.error('Request failed because:', response.statusText)
-    throw new Error('An error occurred please try again')
+    const api = `api(${requestUrl})`
+    console.error(`Request failed because ${api}:`, response.statusText)
+    throw new Error(`An error occurred ${api}please try again`)
   }
   const data = await response.json()
   return data
@@ -107,4 +108,10 @@ export async function getPostsByCategory(
     },
   })
   return posts.data
+}
+
+export async function getRedirects() {
+  const redirects = await fetchAPI('/redirects')
+
+  return redirects.redirects
 }
