@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import PostDetail from './index.page'
+import PostDetail from './page'
 import '@testing-library/jest-dom'
 import { getPublishTime } from './utils'
 

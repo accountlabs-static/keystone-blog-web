@@ -17,6 +17,7 @@ import {
   TELEGRAM,
   TWITTER,
 } from '../../constants/links'
+import Link from 'next/link'
 
 const mediaLogo = [
   {
@@ -51,7 +52,7 @@ const MainSiteModule: FC = () => {
       <MainSiteInfo>
         <Links>
           {mediaLogo.map((media) => (
-            <a href={media.link} key={media.mediaName}>
+            <Link href={media.link} key={media.mediaName}>
               <Image
                 src={media.logoC}
                 height={32}
@@ -65,7 +66,7 @@ const MainSiteModule: FC = () => {
                 width={32}
                 alt={media.mediaName}
               />
-            </a>
+            </Link>
           ))}
         </Links>
         <Title>Keystone Hardware Wallet</Title>

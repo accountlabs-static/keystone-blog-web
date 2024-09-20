@@ -1,5 +1,6 @@
-'use client';
-import React, { ReactNode } from 'react';
+'use client'
+
+import React, { ReactNode } from 'react'
 import {
   Description,
   HomeMain,
@@ -7,14 +8,14 @@ import {
   Title,
   TitleAndDescription,
   TopBanner,
-} from './home.style';
-import Image from 'next/image';
-import Categories from '@/components/Categories';
-import { IMAGE_CDN } from '@/constants/links';
+} from './home.style'
+import Image from 'next/image'
+import Categories from '@/components/Categories'
+import { IMAGE_CDN } from '@/constants/links'
 
 interface LayoutProps {
-  children: ReactNode;
-  description: string;
+  children: ReactNode
+  description: string
 }
 
 export default function HomeLayout({ children, description }: LayoutProps) {
@@ -40,5 +41,5 @@ export default function HomeLayout({ children, description }: LayoutProps) {
         {children}
       </HomeMain>
     </HomeWrapper>
-  );
+  )
 }

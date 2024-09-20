@@ -33,6 +33,12 @@
             "@/components/*": [
                 "src/components/*"
             ],
+            "@/lib/*": [
+                "src/lib/*"
+            ],
+            "@/app/*": [
+                "src/app/*"
+            ],
             "@/pages/*": [
                 "src/pages/*"
             ],
@@ -44,7 +50,7 @@
             ],
             "@/utils/*": [
                 "src/utils/*"
-            ],            
+            ],
             "@/hooks/*": [
                 "src/hooks/*"
             ],

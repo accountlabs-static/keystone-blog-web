@@ -15,9 +15,9 @@ interface CategoryCardProps {
   className?: string
 }
 const CategoryCard: FC<CategoryCardProps> = ({ post, className }) => {
-  if (!post) return null
+  if (!post.slug) return null
   return (
-    <CategoryCardWrapper href={post.slug} className={className}>
+    <CategoryCardWrapper href={`/${post.slug}`} className={className}>
       {post.heroImage && (
         <Image
           src={post.heroImage.url}
@@ -28,8 +28,8 @@ const CategoryCard: FC<CategoryCardProps> = ({ post, className }) => {
       )}
       <PostInfo>
         <Category
-          $fontColor={CATEGORY_COLOR_MAPPER[post.category].fontColor}
-          $bgColor={CATEGORY_COLOR_MAPPER[post.category].bgColor}
+          $fontColor={CATEGORY_COLOR_MAPPER[post.category]?.fontColor}
+          $bgColor={CATEGORY_COLOR_MAPPER[post.category]?.bgColor}
         >
           {post.category}
         </Category>

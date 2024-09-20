@@ -1,55 +1,31 @@
 import { CategoriesWrapper, CategoryLable } from './index.style'
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import { Category } from '@/constants/categories'
-import { useRouter } from 'next/router'
-import { CategoryActivedType } from '@/types/homePageType'
 import { slugify } from '@/utils/helpers'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 const Categories: React.FC = () => {
-  const router = useRouter()
-  const [actived, setActived] = useState<CategoryActivedType>()
-  const category = router.query?.category as CategoryActivedType
+  const params = useParams()
 
-  const changeCategory = useCallback((category: CategoryActivedType) => {
-    setActived(slugify(category))
-  }, [])
-
-  useEffect(() => {
-    if (category) {
-      setActived(slugify(category))
-    } else {
-      setActived('All')
-    }
-  }, [category])
-
-  const renderCategoryLable = () => {
-    const labels = [
+  return (
+    <CategoriesWrapper>
       <Link href="/" key="home">
-        <CategoryLable
-          $actived={actived === 'All'}
-          onClick={() => changeCategory('All')}
-        >
-          Home
-        </CategoryLable>
-      </Link>,
-    ]
-    for (const [_key, value] of Object.entries(Category)) {
-      labels.push(
-        <Link href={`/categories/${slugify(value)}`}>
+        <CategoryLable $actived={!params?.category}>Home</CategoryLable>
+      </Link>
+      {Object.entries(Category).map(([_key, value]) => (
+        <Link href={`/categories/${slugify(value)}`} key={value}>
           <CategoryLable
-            $actived={actived === slugify(value)}
+            $actived={params?.category === slugify(value)}
             key={value}
-            onClick={() => changeCategory(value)}
           >
             {value}
           </CategoryLable>
         </Link>
-      )
-    }
-    return labels
-  }
-  return <CategoriesWrapper>{renderCategoryLable()}</CategoriesWrapper>
+      ))}
+      ,
+    </CategoriesWrapper>
+  )
 }
 
 export default Categories
