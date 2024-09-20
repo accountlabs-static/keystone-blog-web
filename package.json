@@ -1,7 +1,6 @@
 {
   "license": "MIT",
   "scripts": {
-    "preinstall": "node update-package.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
