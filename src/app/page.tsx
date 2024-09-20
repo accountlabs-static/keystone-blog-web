@@ -4,7 +4,7 @@ import { Homepage } from '@/types/homePageType'
 import HomeLayout from '@/components/Layout/home'
 import { AllCategories } from '@/components/HomeCategories/All'
 import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links'
-import Head from 'next/head'
+import { Metadata, ResolvingMetadata } from 'next'
 
 const getPosts = async (): Promise<Homepage> => {
   const POST_COUNT = 9
@@ -30,19 +30,31 @@ const getPosts = async (): Promise<Homepage> => {
   }
 }
 
+export async function generateMetadata(
+  _params: any,
+  _parent: ResolvingMetadata
+): Promise<Metadata> {
+  const homepage = await getPosts()
+
+  return {
+    title: 'Keystone\'s Blog',
+    description: homepage.description,
+    alternates: {
+      canonical: BLOG_HOME_PAGE,
+    },
+    openGraph: {
+      title: 'Keystone\'s Blog',
+      description: homepage.description,
+      images: [`${IMAGE_CDN}/homepage.png`],
+      url: BLOG_HOME_PAGE,
+    },
+  }
+}
+
 export default async function Home() {
   const homepage = await getPosts()
   return (
     <>
-      <Head>
-        <title>Keystone&apos;s Blog</title>
-        <meta name="description" content={homepage.description} />
-        <link rel="canonical" href={BLOG_HOME_PAGE} />
-        <meta property="og:title" content="Keystone's Blog" />
-        <meta property="og:description" content={homepage.description} />
-        <meta property="og:image" content={`${IMAGE_CDN}/homepage.png`} />
-        <meta property="og:url" content={BLOG_HOME_PAGE} />
-      </Head>
       <HomeLayout description={homepage.description}>
         <AllCategories homepage={homepage} />
       </HomeLayout>
