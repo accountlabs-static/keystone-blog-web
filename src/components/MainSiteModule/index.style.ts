@@ -28,6 +28,7 @@ export const MainSiteModuleWrapper = styled.div`
 `
 
 export const MainSiteInfo = styled.div`
+  font-family: var(--font-neue-kaine);
   padding: 42px 72px;
   @media ${DEVICE_QUERY_MOBILE} {
     align-items: center;
@@ -67,10 +68,10 @@ export const Links = styled.div`
 `
 
 export const Title = styled.div`
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 36px;
   margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 733;
+  line-height: 36px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 18px;
     line-height: 28px;
@@ -78,11 +79,12 @@ export const Title = styled.div`
 `
 
 export const Description = styled.div`
-  font-family: var(--font-open-sans);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
   margin-bottom: 24px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 733;
+  line-height: 22px; /* 157.143% */
+  letter-spacing: 0.28px;
   @media ${DEVICE_QUERY_MOBILE} {
     font-size: 14px;
     line-height: 22px;

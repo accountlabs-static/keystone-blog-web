@@ -1,9 +1,50 @@
 import React from 'react'
 import readingTime from 'reading-time'
 import { postConverter } from './utils'
-import Head from 'next/head'
 import { fetchAPI, getPostsAll } from '@/utils/api'
 import Content from './Content'
+import { Metadata, ResolvingMetadata } from 'next'
+
+export async function generateMetadata(
+  params: any,
+  _parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { post } = params
+  const articlesRes = await fetchAPI('/posts', {
+    filters: {
+      slug: post,
+    },
+    populate: {
+      hero_image: {
+        fields: ['name', 'url'],
+      },
+    },
+  })
+
+  const article = articlesRes.data[0]
+
+  if (!article) {
+    return {}
+  }
+
+  const postModel = postConverter(article.attributes)
+
+  return {
+    title: 'Keystone\'s Blog',
+    description: postModel.seo.description,
+    alternates: {
+      canonical: postModel.seo.canonicalURL,
+    },
+    openGraph: {
+      siteName: 'Keystone\'s Blog',
+      type: 'article',
+      title: postModel.seo.title,
+      description: postModel.seo.description,
+      images: [postModel.heroImage.url],
+      url: postModel.seo.canonicalURL,
+    },
+  }
+}
 
 export async function generateStaticParams() {
   const postAll = await getPostsAll()
@@ -42,25 +83,10 @@ export default async function PostDetail({
   const minutesToRead = Math.ceil(readingTime(postModel.bodyText).minutes)
 
   return (
-    <>
-      <Head>
-        <title>{postModel.seo.title}</title>
-        <meta name="description" content={postModel.seo.description} />
-        <link rel="canonical" href={postModel.seo.canonicalURL} />
-        <meta property="og:site_name" content="Keystone's Blog" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={postModel.seo.title} />
-        <meta property="og:description" content={postModel.seo.description} />
-        <meta property="og:image" content={postModel.heroImage.url} />
-        <meta property="og:url" content={postModel.seo.canonicalURL} />
-        <meta property="og:image" content={postModel.heroImage.url} />
-        <meta property="og:url" content={postModel.seo.canonicalURL} />
-      </Head>
-      <Content
-        article={article}
-        postModel={postModel}
-        minutesToRead={minutesToRead}
-      />
-    </>
+    <Content
+      article={article}
+      postModel={postModel}
+      minutesToRead={minutesToRead}
+    />
   )
 }

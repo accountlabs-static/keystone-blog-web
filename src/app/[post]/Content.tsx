@@ -28,7 +28,10 @@ export default function Content({ article, postModel, minutesToRead }: any) {
       <TopBanner>
         <PostInfo>
           <Category
-            color={CATEGORY_COLOR_MAPPER[article.category]?.fontColorInDarkBg}
+            color={
+              CATEGORY_COLOR_MAPPER[article.attributes.category]
+                ?.fontColorInDarkBg
+            }
           >
             {postModel.category}
           </Category>
