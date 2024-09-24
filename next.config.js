@@ -1,5 +1,4 @@
 module.exports = {
-  pageExtensions: ['page.tsx'],
   compiler: {
     styledComponents: true,
   },
@@ -11,5 +10,5 @@ module.exports = {
         pathname: '**',
       },
     ],
-  }
+  },
 }

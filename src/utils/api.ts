@@ -74,6 +74,16 @@ export async function getPostsLatests(count: number, skip: number = 0) {
   return posts.data
 }
 
+export async function getPostsAll() {
+  const posts = await fetchAPI('/posts', {
+    sort: ['publishedAt:desc'],
+    pagination: {
+      limit: Infinity,
+    },
+  })
+  return posts.data
+}
+
 export async function getPostsByCategory(
   category: Category,
   count: number,

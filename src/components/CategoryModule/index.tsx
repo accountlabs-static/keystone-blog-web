@@ -1,11 +1,12 @@
 import { CategoryModuleWrapper, CategoryName, Posts } from './index.style'
 import React, { FC } from 'react'
-import { PostModel } from '../../types/homePageType'
 import CategoryCard from '../CategoryCard'
+import { postConverter } from '@/app/[post]/utils'
+import { Post } from '@/types/postDetailPageType'
 
 interface CategoryModuleProps {
   category: string
-  posts: PostModel[]
+  posts: Post[]
 }
 const CategoryModule: FC<CategoryModuleProps> = ({ category, posts }) => {
   if (posts.length === 0) return null
@@ -14,7 +15,7 @@ const CategoryModule: FC<CategoryModuleProps> = ({ category, posts }) => {
       <CategoryName>{category}</CategoryName>
       <Posts>
         {posts.map((post) => (
-          <CategoryCard post={post} key={post.slug} />
+          <CategoryCard post={postConverter(post) as any} key={post.slug} />
         ))}
       </Posts>
     </CategoryModuleWrapper>
