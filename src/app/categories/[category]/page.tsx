@@ -4,7 +4,6 @@ import { Category } from '@/constants/categories'
 import HomeLayout from '@/components/Layout/home'
 import { OtherCategories } from '@/components/HomeCategories/Other'
 import { slugify, slugToTitle } from '@/utils/helpers'
-import Head from 'next/head'
 import { BLOG_HOME_PAGE, IMAGE_CDN } from '@/constants/links'
 import { Metadata, ResolvingMetadata } from 'next'
 
