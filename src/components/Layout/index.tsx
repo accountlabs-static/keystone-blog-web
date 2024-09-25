@@ -1,7 +1,6 @@
 'use client'
 import React, { ReactNode } from 'react'
 import { GoogleTagManager } from '@next/third-parties/google'
-import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import 'header-footer/dist/style.css'
 import styled from 'styled-components'
@@ -31,10 +30,6 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>Keystone Blog</title>
-      </Head>
       <StyledHeader>
         <Header />
       </StyledHeader>
