@@ -17,10 +17,10 @@ interface CategoriesPageProps {
 }
 
 export async function generateMetadata(
-  params: any,
+  { params }: { params: { category: string } },
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { category } = params.params
+  const { category } = params
   const title = slugToTitle(category as string)
 
   const heroPosts = await getHeroPosts()
@@ -30,7 +30,7 @@ export async function generateMetadata(
   const categoryURL = `${BLOG_HOME_PAGE}/${slug}`
 
   return {
-    title: title,
+    title: `${title} | Keystone's Blog`,
     description: homeDescription,
     alternates: {
       canonical: categoryURL,
