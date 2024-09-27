@@ -6,7 +6,7 @@ import Content from './Content'
 import { Metadata, ResolvingMetadata } from 'next'
 
 export async function generateMetadata(
-  params: any,
+  { params }: { params: { post: string } },
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { post } = params
@@ -30,7 +30,7 @@ export async function generateMetadata(
   const postModel = postConverter(article.attributes)
 
   return {
-    title: 'Keystone\'s Blog',
+    title: postModel.seo.title,
     description: postModel.seo.description,
     alternates: {
       canonical: postModel.seo.canonicalURL,
