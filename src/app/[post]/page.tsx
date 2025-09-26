@@ -5,6 +5,10 @@ import { fetchAPI, getPostsAll } from '@/utils/api'
 import Content from './Content'
 import { Metadata, ResolvingMetadata } from 'next'
 
+// 强制动态渲染，禁用缓存
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function generateMetadata(
   { params }: { params: { post: string } },
   _parent: ResolvingMetadata

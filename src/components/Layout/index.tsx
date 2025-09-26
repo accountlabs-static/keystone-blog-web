@@ -2,17 +2,17 @@
 import React, { ReactNode } from 'react'
 import { GoogleTagManager } from '@next/third-parties/google'
 import dynamic from 'next/dynamic'
-import 'header-footer/dist/style.css'
+import '@keystonehq/header-footer-components/dist/style.css'
 import styled from 'styled-components'
 
 const Header = dynamic(
-  () => import('header-footer').then((res) => res.Header),
+  () => import('@keystonehq/header-footer-components').then((res) => res.Header),
   {
     ssr: false,
   }
 )
 const Footer = dynamic(
-  () => import('header-footer').then((res) => res.Footer),
+  () => import('@keystonehq/header-footer-components').then((res) => res.Footer),
   {
     ssr: false,
   }
