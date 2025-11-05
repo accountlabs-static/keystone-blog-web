@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }: CategoriesPageProps) {
   const categoryTitle = slugToTitle(category as string) as Category
 
   const heroPosts = await getHeroPosts()
-  const posts = await getPostsByCategory(categoryTitle, POST_COUNT)
+  const {data: posts} = await getPostsByCategory(categoryTitle, POST_COUNT)
 
   const homeDescription = heroPosts.description
 

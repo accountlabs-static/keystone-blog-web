@@ -71,7 +71,7 @@ export async function getPostsLatests(count: number, skip: number = 0) {
     },
     sort: ['publishedAt:desc'],
   })
-  return posts.data
+  return posts
 }
 
 export async function getPostsAll() {
@@ -106,5 +106,5 @@ export async function getPostsByCategory(
       },
     },
   })
-  return posts.data
+  return posts
 }

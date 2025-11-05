@@ -7,6 +7,7 @@ import { Homepage } from '@/types/homePageType'
 import { homepageConverter } from '../Layout/utils'
 import { getPostsLatests } from '@/utils/api'
 import Button from '../Button'
+import Loading from '../Loading'
 import { FooterLoadMore } from './All.style'
 import useSWRInfinite from 'swr/infinite'
 
@@ -19,21 +20,31 @@ const getKey = (size: number, previousPageData: []) => {
 
 export function AllCategories({ homepage }: { homepage: Homepage }) {
   const homepageModel = homepageConverter(homepage)
-  const [isHasNew, setIsHasNew] = useState(true)
+  const [hasMore, setHasMore] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const {
     data: list,
     size,
     setSize,
-  } = useSWRInfinite(getKey, ([index]) => getPostsLatests(POST_COUNT, index), {
+  } = useSWRInfinite(getKey, ([index]) => {
+    setLoading(true)
+    return getPostsLatests(POST_COUNT, index).then(({ data, meta }) => {
+      const { total, start } = meta.pagination
+      const currentTotal = start + data.length
+      setHasMore(total > currentTotal)
+      return data
+    }).finally(() => {
+      setLoading(false)
+    })
+  }, {
     revalidateOnFocus: false,
     fallbackData: [homepage.latests],
   })
 
   const loadMore = useCallback(async () => {
-    const newList = await setSize(size + 1)
-    setIsHasNew(newList.length >= POST_COUNT)
-  }, [size, setSize])
+    setSize(size + 1)
+  }, [setSize, size])
 
   return (
     <>
@@ -47,7 +58,12 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
         posts={list?.flat()?.map((it) => it.attributes)}
       />
       <FooterLoadMore>
-        {isHasNew && <Button onClick={() => loadMore()}>Load More</Button>}
+        {loading ?
+          <Loading
+            width='126px'
+            height='10px'
+          /> :
+          <Button hidden={!hasMore} onClick={() => loadMore()}>Load More</Button>}
       </FooterLoadMore>
     </>
   )

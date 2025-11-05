@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import { ButtonStyled } from './style'
 
 export interface ButtonProps {
+  hidden?: boolean
   children?: ReactNode
   type?: 'primary'
   onClick?: () => void
