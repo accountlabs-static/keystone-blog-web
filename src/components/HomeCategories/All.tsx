@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import HeroModule from '@/components/HeroModule'
 import CategoryModule from '@/components/CategoryModule'
 import { Homepage } from '@/types/homePageType'
@@ -31,7 +31,8 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
     setLoading(true)
     return getPostsLatests(POST_COUNT, index).then(({ data, meta }) => {
       const { total, start } = meta.pagination
-      const currentTotal = start + data.length
+      const cacheTotal = list.reduce((acc, it) => acc + it.length, 0)
+      const currentTotal = Math.max(cacheTotal, start + data.length)
       setHasMore(total > currentTotal)
       return data
     }).finally(() => {

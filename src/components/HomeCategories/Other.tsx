@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Category } from '@/constants/categories'
 import { CategoryActivedType, PostModel } from '@/types/homePageType'
 import { Post } from '@/types/postDetailPageType'
@@ -16,6 +16,7 @@ interface Props {
   category: CategoryActivedType
   title: string
   posts: Post[]
+  total?: number
 }
 
 const POST_COUNT = 5
@@ -50,7 +51,8 @@ export function OtherCategories({ category, title, posts }: Props) {
         index
       ).then(({ data, meta }) => {
         const { total, start } = meta.pagination
-        const currentTotal = start + data.length
+        const cacheTotal = list.reduce((acc, it) => acc + it.length, 0)
+        const currentTotal = Math.max(cacheTotal, start + data.length)
         setHasMore(total > currentTotal)
         return data
       }).finally(() => {

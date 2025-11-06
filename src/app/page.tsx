@@ -9,7 +9,7 @@ import { Metadata, ResolvingMetadata } from 'next'
 const getPosts = async (): Promise<Homepage> => {
   const POST_COUNT = 9
   const heroPosts = await getHeroPosts()
-  const {data: latests} = await getPostsLatests(POST_COUNT)
+  const { data: latests } = await getPostsLatests(POST_COUNT)
   try {
     return {
       description: heroPosts.description,
