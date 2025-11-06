@@ -54,7 +54,7 @@ export async function generateStaticParams() {
   return routes
 }
 
-const POST_COUNT = 5
+const POST_COUNT = 16
 
 export default async function CategoryPage({ params }: CategoriesPageProps) {
   const { category } = params

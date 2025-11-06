@@ -11,7 +11,7 @@ import Loading from '../Loading'
 import { FooterLoadMore } from './All.style'
 import useSWRInfinite from 'swr/infinite'
 
-const POST_COUNT = 9
+const POST_COUNT = 24
 
 const getKey = (size: number, previousPageData: []) => {
   if (previousPageData && !previousPageData.length) return null
@@ -25,6 +25,7 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
 
   const {
     data: list,
+    mutate,
     size,
     setSize,
   } = useSWRInfinite(getKey, ([index]) => {
@@ -42,6 +43,12 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
     revalidateOnFocus: false,
     fallbackData: [homepage.latests],
   })
+
+  useEffect(() => {
+    return () => {
+      mutate(undefined, { revalidate: false });
+    };
+  }, [mutate]);
 
   const loadMore = useCallback(async () => {
     setSize(size + 1)

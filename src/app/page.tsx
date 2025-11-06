@@ -7,7 +7,7 @@ import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links'
 import { Metadata, ResolvingMetadata } from 'next'
 
 const getPosts = async (): Promise<Homepage> => {
-  const POST_COUNT = 9
+  const POST_COUNT = 24
   const heroPosts = await getHeroPosts()
   const { data: latests } = await getPostsLatests(POST_COUNT)
   try {

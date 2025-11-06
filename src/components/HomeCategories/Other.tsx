@@ -19,7 +19,7 @@ interface Props {
   total?: number
 }
 
-const POST_COUNT = 5
+const POST_COUNT = 16
 
 const getKey = (
   size: number,
@@ -39,6 +39,7 @@ export function OtherCategories({ category, title, posts }: Props) {
 
   const {
     data: list,
+    mutate,
     size,
     setSize,
   } = useSWRInfinite(
@@ -64,6 +65,12 @@ export function OtherCategories({ category, title, posts }: Props) {
       fallbackData: [posts],
     }
   )
+
+  useEffect(() => {
+    return () => {
+      mutate(undefined, { revalidate: false });
+    };
+  }, [mutate]);
 
   const loadMore = useCallback(async () => {
     setSize(size + 1)
