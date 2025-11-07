@@ -26,6 +26,7 @@ export interface Homepage {
   subHeroFirst: Post
   subHeroSecond: Post
   latests: Post[]
+  pagination?: Record<string, number>
 }
 
 export interface HomepageModule {

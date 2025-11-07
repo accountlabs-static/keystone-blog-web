@@ -22,37 +22,43 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
   const homepageModel = homepageConverter(homepage)
   const [hasMore, setHasMore] = useState(true)
   const [loading, setLoading] = useState(false)
+  const [showList, setShowList] = useState<any[]>([])
 
   const {
     data: list,
-    mutate,
     size,
     setSize,
-  } = useSWRInfinite(getKey, ([index]) => {
-    setLoading(true)
-    return getPostsLatests(POST_COUNT, index).then(({ data, meta }) => {
-      const { total, start } = meta.pagination
-      const cacheTotal = list.reduce((acc, it) => acc + it.length, 0)
-      const currentTotal = Math.max(cacheTotal, start + data.length)
-      setHasMore(total > currentTotal)
-      return data
-    }).finally(() => {
-      setLoading(false)
-    })
-  }, {
+  } = useSWRInfinite(getKey, ([index]) => getPostsLatests(POST_COUNT, index).then((res) => res.data), {
     revalidateOnFocus: false,
     fallbackData: [homepage.latests],
   })
 
+
   useEffect(() => {
-    return () => {
-      mutate(undefined, { revalidate: false });
-    };
-  }, [mutate]);
+    const { total } = homepage.pagination
+    const result = [...list].splice(0, showList.length + 1)
+    const currentTotal = result.reduce((acc, it) => acc + it.length, 0)
+    setShowList(result)
+    setHasMore(total > currentTotal)
+    setLoading(false)
+  }, [list.length])
 
   const loadMore = useCallback(async () => {
-    setSize(size + 1)
-  }, [setSize, size])
+    const hasCache = list.length > showList.length
+    setLoading(true)
+    if (hasCache) {
+      setTimeout(() => {
+        const { total } = homepage.pagination
+        const result = [...showList, list[showList.length]]
+        const currentTotal = result.reduce((acc, it) => acc + it.length, 0)
+        setShowList(result)
+        setHasMore(total > currentTotal)
+        setLoading(false)
+      }, 0)
+    } else {
+      await setSize(size + 1)
+    }
+  }, [list.length, showList, size, setSize])
 
   return (
     <>
@@ -63,7 +69,7 @@ export function AllCategories({ homepage }: { homepage: Homepage }) {
       />
       <CategoryModule
         category={'Latest articles'}
-        posts={list?.flat()?.map((it) => it.attributes)}
+        posts={showList?.flat()?.map((it) => it.attributes)}
       />
       <FooterLoadMore>
         {loading ?

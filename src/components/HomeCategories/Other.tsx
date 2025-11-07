@@ -16,7 +16,7 @@ interface Props {
   category: CategoryActivedType
   title: string
   posts: Post[]
-  total?: number
+  pagination?: Record<string, number>
 }
 
 const POST_COUNT = 16
@@ -33,33 +33,22 @@ const getKey = (
   ]
 }
 
-export function OtherCategories({ category, title, posts }: Props) {
-  const [hasMore, setHasMore] = useState(true)
-  const [loading, setLoading] = useState(false)
+export function OtherCategories({ category, title, posts, pagination }: Props) {
+  const [hasMore, setHasMore] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [showList, setShowList] = useState<any[]>([])
 
   const {
     data: list,
-    mutate,
     size,
     setSize,
   } = useSWRInfinite(
     (size, previousPageData) => getKey(size, previousPageData, category),
-    ([category, index]) => {
-      setLoading(true)
-      return getPostsByCategory(
-        slugToTitle(category as string) as Category,
-        POST_COUNT,
-        index
-      ).then(({ data, meta }) => {
-        const { total, start } = meta.pagination
-        const cacheTotal = list.reduce((acc, it) => acc + it.length, 0)
-        const currentTotal = Math.max(cacheTotal, start + data.length)
-        setHasMore(total > currentTotal)
-        return data
-      }).finally(() => {
-        setLoading(false)
-      })
-    },
+    ([category, index]) => getPostsByCategory(
+      slugToTitle(category as string) as Category,
+      POST_COUNT,
+      index
+    ).then((res) => res.data),
     {
       revalidateOnFocus: false,
       fallbackData: [posts],
@@ -67,20 +56,36 @@ export function OtherCategories({ category, title, posts }: Props) {
   )
 
   useEffect(() => {
-    return () => {
-      mutate(undefined, { revalidate: false });
-    };
-  }, [mutate]);
+    const { total } = pagination
+    const result = [...list].splice(0, showList.length + 1)
+    const currentTotal = result.reduce((acc, it) => acc + it.length, 0)
+    setShowList(result)
+    setHasMore(total > currentTotal)
+    setLoading(false)
+  }, [list.length])
 
   const loadMore = useCallback(async () => {
-    setSize(size + 1)
-  }, [size, setSize])
+    const hasCache = list.length > showList.length
+    setLoading(true)
+    if (hasCache) {
+      setTimeout(() => {
+        const { total } = pagination
+        const result = [...showList, list[showList.length]]
+        const currentTotal = result.reduce((acc, it) => acc + it.length, 0)
+        setShowList(result)
+        setHasMore(total > currentTotal)
+        setLoading(false)
+      }, 0)
+    } else {
+      await setSize(size + 1)
+    }
+  }, [list.length, showList, size, setSize])
 
   return (
     <>
       <CategoryName>{title}</CategoryName>
       <Posts>
-        {list.flat().map((it) => (
+        {showList.flat().map((it) => (
           <PostItem
             post={postConverter(it.attributes) as unknown as PostModel}
             key={it.attributes.slug}
