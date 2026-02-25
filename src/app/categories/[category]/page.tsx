@@ -54,7 +54,7 @@ export async function generateStaticParams() {
   return routes
 }
 
-const POST_COUNT = 5
+const POST_COUNT = 16
 
 export default async function CategoryPage({ params }: CategoriesPageProps) {
   const { category } = params
@@ -62,14 +62,14 @@ export default async function CategoryPage({ params }: CategoriesPageProps) {
   const categoryTitle = slugToTitle(category as string) as Category
 
   const heroPosts = await getHeroPosts()
-  const posts = await getPostsByCategory(categoryTitle, POST_COUNT)
+  const { data: posts, meta: { pagination } } = await getPostsByCategory(categoryTitle, POST_COUNT)
 
   const homeDescription = heroPosts.description
 
   return (
     <>
       <HomeLayout description={homeDescription}>
-        <OtherCategories title={title} category={category} posts={posts} />
+        <OtherCategories title={title} category={category} posts={posts} pagination={pagination} />
       </HomeLayout>
     </>
   )

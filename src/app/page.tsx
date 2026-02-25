@@ -7,9 +7,9 @@ import { BLOG_HOME_PAGE, IMAGE_CDN } from '../constants/links'
 import { Metadata, ResolvingMetadata } from 'next'
 
 const getPosts = async (): Promise<Homepage> => {
-  const POST_COUNT = 9
+  const POST_COUNT = 24
   const heroPosts = await getHeroPosts()
-  const latests = await getPostsLatests(POST_COUNT)
+  const { data: latests, meta: { pagination } } = await getPostsLatests(POST_COUNT)
   try {
     return {
       description: heroPosts.description,
@@ -17,6 +17,7 @@ const getPosts = async (): Promise<Homepage> => {
       subHeroFirst: heroPosts.sub_hero_first.data,
       subHeroSecond: heroPosts.sub_hero_second.data,
       latests,
+      pagination,
     }
   } catch (error) {
     console.error('An error occurred:', error)
@@ -26,6 +27,7 @@ const getPosts = async (): Promise<Homepage> => {
       subHeroFirst: null,
       subHeroSecond: null,
       latests: [],
+      pagination: {},
     }
   }
 }

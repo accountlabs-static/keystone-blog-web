@@ -1,5 +1,5 @@
-import { Post } from './postDetailPageType';
+import { Post } from './postDetailPageType'
 
 export interface CategoriesPage {
-  posts: Post[];
+  posts: Post[]
 }

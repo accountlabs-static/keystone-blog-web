@@ -6,7 +6,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
-  display: inline-flex;
+  display: ${(props) => (props.hidden ? 'none' : 'inline-flex')};
   align-items: center;
   padding: 12px 20px;
   color: white;
