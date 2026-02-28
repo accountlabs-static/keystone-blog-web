@@ -2,8 +2,10 @@
 
 import React from 'react'
 import {
+  ArticleContainer,
   BackToHome,
   BackToHomeAndShare,
+  BodyContainer,
   BodyText,
   Category,
   PostContainer,
@@ -11,6 +13,13 @@ import {
   PublishTime,
   PublishTimeAndReadingTime,
   ReadingTime,
+  Summary,
+  SummaryContent,
+  SummaryTitle,
+  TableOfContentsContainer,
+  TableOfContentsLi,
+  TableOfContentsLink,
+  TableOfContentsUl,
   Title,
   TopBanner,
 } from './index.style'
@@ -21,8 +30,37 @@ import MainSiteModule from '@/components/MainSiteModule'
 import markedAlert from 'marked-alert'
 import { CATEGORY_COLOR_MAPPER } from '@/constants/categories'
 import ShareMedia from './ShareMedia'
+import { HeadingItem } from './utils/markdown'
+import useIsMobile from '@/hooks/useMobile'
+
+const TableOfContents = ({ headings }: { headings: HeadingItem[] }) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
+    e.preventDefault();
+    const element = document.getElementById(slug);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+  return (
+    <TableOfContentsContainer>
+      <TableOfContentsUl>
+        {headings.map((heading) => (
+          <TableOfContentsLi key={heading.slug} depth={heading.depth}>
+            <TableOfContentsLink
+              href={`#${heading.slug}`} 
+              onClick={(e) => handleClick(e, heading.slug)}
+            >
+              {heading.text}
+            </TableOfContentsLink>
+          </TableOfContentsLi>
+        ))}
+      </TableOfContentsUl>
+    </TableOfContentsContainer>
+  );
+}
 
 export default function Content({ article, postModel, minutesToRead }: any) {
+  const isMobile = useIsMobile();
   return (
     <PostContainer>
       <TopBanner>
@@ -71,13 +109,24 @@ export default function Content({ article, postModel, minutesToRead }: any) {
         </BackToHome>
         <ShareMedia post={article} />
       </BackToHomeAndShare>
-      <BodyText>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: marked.use(markedAlert()).parse(postModel.bodyText),
-          }}
-        />
-      </BodyText>
+      <BodyContainer>
+        {isMobile ? null : <TableOfContents headings={postModel.headings} />}
+        <ArticleContainer>
+          {postModel.summary && (
+            <Summary>
+              <SummaryTitle>Summary</SummaryTitle>
+              <SummaryContent>{postModel.summary}</SummaryContent>
+            </Summary>
+          )}
+          <BodyText>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: marked.use(markedAlert()).parse(postModel.bodyText),
+              }}
+            />
+          </BodyText>
+        </ArticleContainer>
+      </BodyContainer>
       <MainSiteModule />
     </PostContainer>
   )

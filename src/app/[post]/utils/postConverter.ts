@@ -1,7 +1,7 @@
 import { Post, PostModel } from '@/types/postDetailPageType'
 import { BLOG_HOME_PAGE } from '@/constants/links'
 import markedAlert from 'marked-alert'
-import { getMarkDownParser } from './markdown'
+import { getHeadings, getMarkDownParser } from './markdown'
 
 export const getPublishTime = (publishAt: string) => {
   const date = new Date(publishAt)
@@ -22,6 +22,8 @@ const postBodyConverter = (postBody: string): string => {
 export const postConverter = (post: Post): PostModel => {
   return {
     bodyText: postBodyConverter(post.body_text),
+    headings: getHeadings(post.body_text),
+    summary: post.summary,
     title: post.title,
     category: post.category,
     publishTime: getPublishTime(post.publishedAt),

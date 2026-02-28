@@ -181,10 +181,89 @@ export const BackToHomeAndShare = styled.div`
   }
 `
 
+export const TableOfContentsContainer = styled.div`
+  width: 300px;
+  margin-left: 40px;
+  position: sticky;
+  top: 50px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+`
+export const TableOfContentsUl = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`
+
+export const TableOfContentsLi = styled.div<{ depth?: number }>`
+  padding-left: ${(props) => (props.depth && props.depth > 2 ? (props.depth - 2) * 16 : 0)}px;
+  color: ${(props) => (props.depth === 2 ? 'var(--fg-primary-color)' : 'var(--fg-subtle-color)')};
+`
+
+export const TableOfContentsLink = styled.a`
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 28px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: var(--font-open-sans);
+
+  &:hover {
+    color: var(--bd-primary-color, #1F5AFF);
+    background-color: rgba(31, 90, 255, 0.08);
+  }
+`
+
+export const BodyContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1580px;
+  margin: 0 auto;
+  @media ${DEVICE_QUERY_MOBILE} {
+    width: 100%;
+  }
+`
+
+export const ArticleContainer = styled.div`
+  @media ${DEVICE_QUERY_MOBILE} {
+    width: 100%;
+  }
+`
+
+export const Summary = styled.div`
+  margin: 20px 40px;
+  padding: 24px;
+  width: 880px;
+  background: #F5F7FC;
+  @media ${DEVICE_QUERY_MOBILE} {
+    width: auto;
+    margin: 20px 24px 0 24px;
+  }
+`
+
+export const SummaryTitle = styled.h2`
+  font-weight: 733;
+  font-size: 22px;
+  line-height: 32px;
+`
+
+export const SummaryContent = styled.div`
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+`
+
 export const BodyText = styled.div`
   font-family: var(--font-open-sans);
   width: 880px;
-  margin: 76px auto;
+  margin: 20px 40px;
   color: var(--banner-bg-color);
   @media ${DEVICE_QUERY_MOBILE} {
     width: auto;

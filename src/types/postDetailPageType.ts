@@ -5,6 +5,7 @@ export interface Post {
   createdAt: string
   updatedAt: string
   publishedAt: string
+  summary: string
   locale: string
   slug: string
   hero_image: HeroImage
@@ -35,6 +36,8 @@ export interface SEO {
 export interface PostModel {
   bodyText: string
   title: string
+  headings?: { text: string; depth: number; slug: string }[]
+  summary: string
   category: string
   publishTime: string
   locale: string
